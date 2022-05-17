@@ -12,22 +12,22 @@
 
 #include "../inc/Cub3D.h"
 
-int	init_textures(t_info *info, int num)
-{
-	int	idx;
-
-	idx = 0;
-	if (!(info->txt = (t_img **)malloc(sizeof(t_img *) * num - 1)))
-		return (0);
-	while (idx < num)
-	{
-		if (!(info->txt[idx] = (t_img *)malloc(sizeof(t_img) * 1)))
-			return (0);
-		utils_bzero(info->txt[idx], sizeof(t_img));
-		++idx;
-	}
-	return (1);
-}
+//int	init_textures(t_info *info, int num)
+//{
+//	int	idx;
+//
+//	idx = 0;
+//	if (!(info->txt = (t_img **)malloc(sizeof(t_img *) * num - 1)))
+//		return (0);
+//	while (idx < num)
+//	{
+//		if (!(info->txt[idx] = (t_img *)malloc(sizeof(t_img) * 1)))
+//			return (0);
+//		utils_bzero(info->txt[idx], sizeof(t_img));
+//		++idx;
+//	}
+//	return (1);
+//}
 
 int	init_map(t_info *info, char *map_name)
 {
@@ -110,7 +110,7 @@ int	init_win_img(t_info *info)
 
 int	init_info(t_info *info, char *argv)
 {
-	if (!init_textures(info, 4) || !init_map(info, argv) || \
+	if (!init_map(info, argv) || \
 	!init_key(info) || !init_player(info) || !init_win_img(info))
 		return (0);
 	return (1);

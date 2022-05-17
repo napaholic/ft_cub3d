@@ -56,23 +56,23 @@ int	utils_check_txt_execute(char *path)
 }
 
 //실패시 0반환 (파일권한도동일)
-int	texture_set(t_info *info, char *path, int idx)
-{
-	if (!utils_check_txt_execute(path))
-		return (0);
-	//test code
-	// printf("txt path is: %s\n", path);
-	info->txt[idx]->img = mlx_xpm_file_to_image(info->mlx, path, \
-		&info->txt[idx]->img_width, &info->txt[idx]->img_height);
-	if (!info->txt[idx])
-		return (0);
-	info->txt[idx]->data = (int *)mlx_get_data_addr(info->txt[idx]->img, \
-		&info->txt[idx]->bits_per_pixel, &info->txt[idx]->size_line, &info->txt[idx]->endian);
-	//test code
-	// printf("imgheght: %d\n", info->txt[idx]->img_height);
-	free(path);
-	return (1);
-}
+//int	texture_set(t_info *info, char *path, int idx)
+//{
+//	if (!utils_check_txt_execute(path))
+//		return (0);
+//	//test code
+//	// printf("txt path is: %s\n", path);
+//	info->txt[idx]->img = mlx_xpm_file_to_image(info->mlx, path, \
+//		&info->txt[idx]->img_width, &info->txt[idx]->img_height);
+//	if (!info->txt[idx])
+//		return (0);
+//	info->txt[idx]->data = (int *)mlx_get_data_addr(info->txt[idx]->img, \
+//		&info->txt[idx]->bits_per_pixel, &info->txt[idx]->size_line, &info->txt[idx]->endian);
+//	//test code
+//	// printf("imgheght: %d\n", info->txt[idx]->img_height);
+//	free(path);
+//	return (1);
+//}
 
 char	*utils_substr(char const *s, unsigned int start, size_t len)
 {
@@ -112,32 +112,32 @@ char *get_texture_path(char *line, int idx)
 	return (path);
 }
 
-int	read_txt_path(char *line, int first, int second, int idx, t_info *info)
-{
-	char	*path;
-
-	if (!utils_check_txt_path(line))
-	{
-		printf("Error\n wrong path: %s\n", line);
-		exit(1);
-	}
-	path = get_texture_path(line, idx); //path만 따로 저장하는 함수
-	if (!path)
-		return (0);
-	utils_check_txt_execute(path); //path가 유효한지 확인
-	while (utils_white_space(line[idx]))
-		++idx;
-	if (first == 'N' && second == 'O')
-		return (texture_set(info, path, TEX_WALL_N));
-	if (first == 'S' && second == 'O')
-		return (texture_set(info, path, TEX_WALL_S));
-	if (first == 'E' && second == 'A')
-		return (texture_set(info, path, TEX_WALL_E));
-	if (first == 'W' && second == 'E')
-		return (texture_set(info, path, TEX_WALL_W));
-	else
-		return (0);
-}
+//int	read_txt_path(char *line, int first, int second, int idx, t_info *info)
+//{
+//	char	*path;
+//
+//	if (!utils_check_txt_path(line))
+//	{
+//		printf("Error\n wrong path: %s\n", line);
+//		exit(1);
+//	}
+//	path = get_texture_path(line, idx); //path만 따로 저장하는 함수
+//	if (!path)
+//		return (0);
+//	utils_check_txt_execute(path); //path가 유효한지 확인
+//	while (utils_white_space(line[idx]))
+//		++idx;
+//	if (first == 'N' && second == 'O')
+//		return (texture_set(info, path, TEX_WALL_N));
+//	if (first == 'S' && second == 'O')
+//		return (texture_set(info, path, TEX_WALL_S));
+//	if (first == 'E' && second == 'A')
+//		return (texture_set(info, path, TEX_WALL_E));
+//	if (first == 'W' && second == 'E')
+//		return (texture_set(info, path, TEX_WALL_W));
+//	else
+//		return (0);
+//}
 
 int	utils_check_color(char *line, int c, int idx)
 {
@@ -221,12 +221,14 @@ int	read_map_setting(char *line, int idx, t_info *info)
 	}
 	else
 		return (2);
-	if (first == 'N' || first == 'W' || first == 'E' || first == 'S')
-		ret = read_txt_path(line, first, second, idx, info);
-	else if (first == 'F' || first == 'C')
-		ret = read_color(line, line[idx], idx, info);
-	else
-		ret = 2;
+	info->win_hei = info->win_hei;//<- test code
+//	if (first == 'N' || first == 'W' || first == 'E' || first == 'S')
+//		ret = read_txt_path(line, first, second, idx, info);
+//	else if (first == 'F' || first == 'C')
+//		ret = read_color(line, line[idx], idx, info);
+//	else
+//		ret = 2;
+	ret = 1;
 	return (ret);
 }
 

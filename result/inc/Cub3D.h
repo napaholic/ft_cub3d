@@ -152,25 +152,18 @@ typedef struct	s_floordata
 /* main struct */
 typedef struct	s_info
 {
-	//mlx 구조체 여기로 이동
 	void	*mlx;
 	void	*win;
-
-	//고정으로 바꿔도 되는 창 크기
 	int		win_wid;
 	int		win_hei;
 	int		buf[640][480];
-
-	//바닥, 천장 색깔
 	int		floor_color;
 	int		ceiling_color;
-	//텍스쳐 배열
 	int		**texture;
-	//구조체
 	t_pos	*pos;
 	t_key	*key;
 	t_img	*img;
-	t_img	**txt;
+//	t_path  *path;
 	t_map	*map;
 }				t_info;
 
@@ -223,7 +216,6 @@ int		gnl_return(char **string, char **line, int read_size);
 int		get_next_line(int fd, char **line);
 
 /* init.c */
-int		init_textures(t_info *info, int num);
 int		init_map(t_info *info, char *map_name);
 int		init_key(t_info *info);
 int		init_player(t_info *info);
@@ -236,14 +228,14 @@ char	*read_map(char *argv, t_info *info);
 int	read_map_sub(char *line, char **map, t_info *info, int gnl_ret);
 int		read_map_setting(char *line, int idx, t_info *info);
 int		read_color(char *line, int c, int idx, t_info *info);
-int		read_txt_path(char *line, int first, int second, int idx, t_info *info);
+//int		read_txt_path(char *line, int first, int second, int idx, t_info *info);
 int	map_check(char *line, char **map, int idx, int gnl_ret);
 int	get_rgb_value(char *line);
 
 int		utils_check_txt_execute(char *path);
 int		utils_check_txt_path(char *line);
 int	utils_check_color(char *line, int c, int idx);
-int	texture_set(t_info *info, char *path, int idx);
+//int	texture_set(t_info *info, char *path, int idx);
 
 
 /* texture_set.c */
@@ -284,8 +276,8 @@ void	set_texture_data(t_wall_data *wall_data, t_info *info);
 int		set_color(t_wall_data *wall_data, t_info *info);
 
 /* load_texture.c */
-void    load_texture(t_info *info);
 void    init_texture(t_info *info);
+void    load_texture(t_info *info);
 void	load_image(t_info *info, int *texture, char *path, t_img *img);
 
 /* loop_hook.c */
