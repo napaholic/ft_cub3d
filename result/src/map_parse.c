@@ -221,6 +221,8 @@ int	read_map_setting(char *line, int idx, t_info *info)
 	}
 	else
 		return (2);
+	first = first + 1;
+	second = second + 1; //test code
 	info->win_hei = info->win_hei;//<- test code
 //	if (first == 'N' || first == 'W' || first == 'E' || first == 'S')
 //		ret = read_txt_path(line, first, second, idx, info);

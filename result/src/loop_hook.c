@@ -61,12 +61,6 @@ int	raycasting(t_info *info)
 			else
 				info->buf[count][y] = 0x000000;
 		}
-		y = wall_data->draw_start - 1;
-		while (++y < wall_data->draw_end)
-		{
-			info->buf[count][y] = set_color(wall_data, info);
-		}
-
 	}
 	mlx_put_image_to_window(info->mlx, info->win, info->img->img, 0, 0);
 	draw(info);
