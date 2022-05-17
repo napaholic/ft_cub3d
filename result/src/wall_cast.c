@@ -19,11 +19,11 @@ void	set_wall_data(t_wall_data *wall_data, t_info *info)
 
 void	set_texture_data(t_wall_data *wall_data, t_info *info)
 {
-	wall_data->texX = (int)(wall_data->wallx * (double)TEX_WIDTH);
+	wall_data->tex_x = (int)(wall_data->wallx * (double)TEX_WIDTH);
 	if (wall_data->side == 0 && wall_data->raydir_x > 0)
-		wall_data->texX = TEX_WIDTH - wall_data->texX - 1;
+		wall_data->tex_x = TEX_WIDTH - wall_data->tex_x - 1;
 	if (wall_data->side == 1 && wall_data->raydir_x < 0)
-		wall_data->texX = TEX_WIDTH - wall_data->texX - 1;
+		wall_data->tex_x = TEX_WIDTH - wall_data->tex_x - 1;
 	wall_data->step_val = 1.0 * TEX_WIDTH / wall_data->lineheight;
 	wall_data->tex_pos = (wall_data->draw_start - info->win_hei / 2 + wall_data->lineheight / 2) * wall_data->step_val;
 }
@@ -45,7 +45,7 @@ int		set_color(t_wall_data *wall_data, t_info *info)
 	else
 		texnum = TEX_WALL_W;
 	(void)info;
-	color = info->texture[texnum][TEX_HEIGHT * texY + wall_data->texX];
+	color = info->texture[texnum][TEX_HEIGHT * texY + wall_data->tex_x];
 	if (wall_data->side == 1)
 		color = (color >> 1) & 8355711;
 	return (color);

@@ -39,18 +39,6 @@ int	main(int argc, char **argv)
 		printf("Error\n init error");
 		exit(1);
 	}
-	info->texture = (int **)malloc(sizeof(int *) * 7);
-	for(int i = 0; i < 7; i++)
-	{
-		info->texture[i] = (int *)malloc(sizeof(int) * (info->win_hei * info->win_wid));
-	}
-	for (int i = 0; i < 7; i++)
-	{
-		for (int j = 0; j < info->win_hei * info->win_wid; j++)
-		{
-			info->texture[i][j] = 0;
-		}
-	}
 	load_texture(info);
 	// 4. mlx_hook
 	hook_set(info);

@@ -49,7 +49,7 @@ void	calc_perp_dist(t_wall_data *wall_data, t_info *info)
 	return ;
 }
 
-void	stepProgress_until_hit(t_wall_data *wall_data, t_info *info)//벽에 맞을때까지 sideDist 증가. sideDist 가 나중에 perpWallDist 에 사용됨.
+void	step_progress_until_hit(t_wall_data *wall_data, t_info *info)//벽에 맞을때까지 sideDist 증가. sideDist 가 나중에 perpWallDist 에 사용됨.
 {
 	wall_data->hit = 0;
 	while (wall_data->hit == 0)
@@ -66,11 +66,9 @@ void	stepProgress_until_hit(t_wall_data *wall_data, t_info *info)//벽에 맞을
 			wall_data->map_pos_y += wall_data->step_y;
 			wall_data->side = 1;
 		}
-		if (info->map->world_map[wall_data->map_pos_x][wall_data->map_pos_y] == '1')
+		if (info->map->world_map[wall_data->map_pos_y]
+		[wall_data->map_pos_x] == '1')
 			wall_data->hit = 1;
-		//test code
-//		printf("\n\nposx: %d\n", wall_data->map_pos_x);
-//		printf("\nposy: %d\n\n", wall_data->map_pos_y);
 	}
 } //hit이 wall_data안에 있어서 그걸로 교체
 

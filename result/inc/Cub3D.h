@@ -121,8 +121,8 @@ typedef struct	s_wall_data
 	int		lineheight;
 	int		draw_start;
 	int		draw_end;
-	double	wallx; //@
-	int		texX; //@
+	double	wallx;
+	int		tex_x;
 	double	step_val; //@
 	double	tex_pos; //@
 	int		hit;
@@ -197,7 +197,7 @@ void	init_DDA_cast(t_wall_data *wall_data, t_info *info);
 void	calc_perp_dist(t_wall_data *wall_data, t_info *info);
 void	set_dda(t_wall_data *wall_data, t_info *info, int cur_x);
 void	wall_cast(t_info *info, t_wall_data *wall_data, int count);
-void	stepProgress_until_hit(t_wall_data *wall_data, t_info *info);
+void	step_progress_until_hit(t_wall_data *wall_data, t_info *info);
 
 /* draw_floor */
 void    draw(t_info *info);
@@ -285,6 +285,7 @@ int		set_color(t_wall_data *wall_data, t_info *info);
 
 /* load_texture.c */
 void    load_texture(t_info *info);
+void    init_texture(t_info *info);
 void	load_image(t_info *info, int *texture, char *path, t_img *img);
 
 /* loop_hook.c */

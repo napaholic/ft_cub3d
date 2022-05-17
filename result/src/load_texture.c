@@ -18,11 +18,25 @@ void    load_texture(t_info *info)
 {
 	t_img   img;
 
+	init_texture(info);
 	load_image(info, info->texture[0], "textures/blue_block.xpm", &img);
 	load_image(info, info->texture[1], "textures/green_block.xpm", &img);
 	load_image(info, info->texture[2], "textures/red_block.xpm", &img);
 	load_image(info, info->texture[3], "textures/yellow_block.xpm", &img);
-	load_image(info, info->texture[4], "textures/floor.xpm", &img);
-	load_image(info, info->texture[5], "textures/floor2.xpm", &img);
-	load_image(info, info->texture[6], "textures/blue_block.xpm", &img);
+}
+
+void    init_texture(t_info *info)
+{
+	info->texture = (int **)malloc(sizeof(int *) * 4);
+	for(int i = 0; i < 4; i++)
+	{
+		info->texture[i] = (int *)malloc(sizeof(int) * (info->win_hei * info->win_wid));
+	}
+	for (int i = 0; i < 4; i++)
+	{
+		for (int j = 0; j < info->win_hei * info->win_wid; j++)
+		{
+			info->texture[i][j] = 0;
+		}
+	}
 }
