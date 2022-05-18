@@ -1,6 +1,6 @@
 #include "../inc/Cub3D.h"
 
-void    draw(t_info *info)
+void	draw(t_info *info)
 {
 	int y;
 	int x;

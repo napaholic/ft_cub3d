@@ -6,7 +6,7 @@
 /*   By: yeju <yeju@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 16:14:25 by yeju              #+#    #+#             */
-/*   Updated: 2022/05/18 15:26:30 by yeju             ###   ########.fr       */
+/*   Updated: 2022/05/18 20:46:49 by yeju             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,34 +35,37 @@ int	check_fill(t_info *info)
 	return (1);
 }
 
-// void	utils_check_fill()
+
+int	is_save(int x, int y, t_info *info)
+{
+	return(0 <= x && x < info->map->map_width + 1 && 0 <= y && y < info->map->map_height + 1);
+}
 
 int	flood_fill(int pox, int poy, t_info *info)
 {
-	//test code
-	// for (int i = 0; i < info->map->map_height+1; i++)
-	// 	printf("%s\n", info->map->world_map[i]);
-	// printf("\n");
+				//동 서 남 북
+	int dx[4] = {1, 0, -1, 0};
+	int dy[4] = {0, 1, 0, -1};
+	int idx;
+	int nx;
+	int ny;
+	
+	idx = 0;
 	info->map->world_map[poy][pox] = '2';
-	if (pox + 1 >= 0 && pox + 1 <= info->map->map_width - 1 && info->map->world_map[poy][pox + 1] != '2' && info->map->world_map[poy][pox + 1] != '1')
+	for (int i = 0; i < info->map->map_height+1; i++)
+		printf("%s\n", info->map->world_map[i]);
+	printf("\n");
+	while (idx < 4)
 	{
-		// printf("pox+1 poy: %d, pox: %d\n", poy, pox);
-		flood_fill(pox + 1, poy, info);
-	}
-	if (pox - 1 >= 0 && pox - 1 <= info->map->map_width - 1 && info->map->world_map[poy][pox - 1] != '2' && info->map->world_map[poy][pox - 1] != '1')
-	{
-		// printf("pox-1 poy: %d, pox: %d\n", poy, pox);
-		flood_fill(pox - 1, poy, info);
-	}
-	if (poy + 1 >= 0 && poy + 1 <= info->map->map_height - 1 && info->map->world_map[poy + 1][pox] != '2' && info->map->world_map[poy + 1][pox] != '1')
-	{
-		// printf("poy+1 poy: %d, pox: %d\n", poy, pox);
-		flood_fill(pox, poy + 1, info);
-	}
-	if (poy - 1 >= 0 && poy - 1 <= info->map->map_height - 1 && info->map->world_map[poy - 1][pox] != '2' && info->map->world_map[poy - 1][pox] != '1')
-	{
-		// printf("poy-1 poy: %d, pox: %d\n", poy, pox);
-		flood_fill(pox, poy - 1, info);
+		nx = pox + dx[idx];
+		ny = poy + dy[idx];
+		while (is_save(nx, ny, info) && info->map->world_map[ny][nx] == '0')
+		{
+			// printf("nx, ny: %d, %d\n", nx, ny);
+			// info->map->world_map[ny][nx] = '2';
+			flood_fill(nx, ny, info);
+		}
+		idx++;
 	}
 	return (check_fill(info));
 }
