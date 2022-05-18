@@ -6,7 +6,7 @@
 /*   By: yeju <yeju@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 16:14:25 by yeju              #+#    #+#             */
-/*   Updated: 2022/05/18 18:52:59 by yeju             ###   ########.fr       */
+/*   Updated: 2022/05/18 20:41:01 by yeju             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,26 +35,41 @@ int	check_fill(t_info *info)
 	return (1);
 }
 
-// void	utils_check_fill()
+
+int	is_save(int x, int y, t_info *info)
+{
+	return(0 <= x && x < info->map->map_width + 1 && 0 <= y && y < info->map->map_height + 1);
+}
 
 int	flood_fill(int pox, int poy, t_info *info)
 {
+				//동 서 남 북
+	int dx[4] = {1, 0, -1, 0};
+	int dy[4] = {0, 1, 0, -1};
+	int idx;
+	int nx;
+	int ny;
+	
+	idx = 0;
 	info->map->world_map[poy][pox] = '2';
-	if (pox + 1 >= 0 && pox + 1 <= info->map->map_width - 1 && info->map->world_map[poy][pox + 1] != '2' && info->map->world_map[poy][pox + 1] != '1')
+	for (int i = 0; i < info->map->map_height+1; i++)
+		printf("%s\n", info->map->world_map[i]);
+	printf("\n");
+	while (idx < 4)
 	{
-		flood_fill(pox + 1, poy, info);
-	}
-	if (pox - 1 >= 0 && pox - 1 <= info->map->map_width - 1 && info->map->world_map[poy][pox - 1] != '2' && info->map->world_map[poy][pox - 1] != '1')
-	{
-		flood_fill(pox - 1, poy, info);
-	}
-	if (poy + 1 >= 0 && poy + 1 <= info->map->map_height - 1 && info->map->world_map[poy + 1][pox] != '2' && info->map->world_map[poy + 1][pox] != '1')
-	{
-		flood_fill(pox, poy + 1, info);
-	}
-	if (poy - 1 >= 0 && poy - 1 <= info->map->map_height - 1 && info->map->world_map[poy - 1][pox] != '2' && info->map->world_map[poy - 1][pox] != '1')
-	{
-		flood_fill(pox, poy - 1, info);
+		nx = pox + dx[idx];
+		ny = poy + dy[idx];
+		if (is_save(nx, ny, info) && info->map->world_map[ny][nx] == '0')
+		{
+			printf("nx, ny: %d, %d\n", nx, ny);
+			// info->map->world_map[ny][nx] = '2';
+			flood_fill(nx, ny, info);
+		}
+		else if (is_save(nx, ny, info) && (info->map->world_map[ny][nx] != '0' || info->map->world_map[ny][nx] != '1' || info->map->world_map[ny][nx] != '2'))
+		{
+			return (0);
+		}
+		idx++;
 	}
 	return (check_fill(info));
 }
