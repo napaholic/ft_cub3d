@@ -6,7 +6,7 @@
 /*   By: yeju <yeju@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 13:17:02 by yeju              #+#    #+#             */
-/*   Updated: 2022/05/13 10:15:53 by yeju             ###   ########.fr       */
+/*   Updated: 2022/05/18 15:18:40 by yeju             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,8 @@ int	init_player(t_info *info)
 	if (!(info->pos = (t_pos *)malloc(sizeof(t_pos))))
 		return (0);
 	utils_bzero(info->pos, sizeof(t_pos));
-	info->pos->pos_x = 1.0;
-	info->pos->pos_y = 1.0;
+	info->pos->pos_x = -20.0; //pos_set오류시 -20값이기때문에 init을 -20으로!
+	info->pos->pos_y = -20.0;
 	info->pos->dir_x = 1.0;
 	info->pos->dir_y = 0.0;
 	info->pos->plane_x = 0.0;
