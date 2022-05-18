@@ -6,7 +6,7 @@
 /*   By: yeju <yeju@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 16:14:25 by yeju              #+#    #+#             */
-/*   Updated: 2022/05/18 20:41:01 by yeju             ###   ########.fr       */
+/*   Updated: 2022/05/18 20:46:49 by yeju             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,15 +59,11 @@ int	flood_fill(int pox, int poy, t_info *info)
 	{
 		nx = pox + dx[idx];
 		ny = poy + dy[idx];
-		if (is_save(nx, ny, info) && info->map->world_map[ny][nx] == '0')
+		while (is_save(nx, ny, info) && info->map->world_map[ny][nx] == '0')
 		{
-			printf("nx, ny: %d, %d\n", nx, ny);
+			// printf("nx, ny: %d, %d\n", nx, ny);
 			// info->map->world_map[ny][nx] = '2';
 			flood_fill(nx, ny, info);
-		}
-		else if (is_save(nx, ny, info) && (info->map->world_map[ny][nx] != '0' || info->map->world_map[ny][nx] != '1' || info->map->world_map[ny][nx] != '2'))
-		{
-			return (0);
 		}
 		idx++;
 	}
