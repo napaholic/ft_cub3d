@@ -6,7 +6,7 @@
 /*   By: yeju <yeju@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 10:21:07 by yeju              #+#    #+#             */
-/*   Updated: 2022/05/13 12:48:14 by yeju             ###   ########.fr       */
+/*   Updated: 2022/05/18 18:46:17 by yeju             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	key_press(int key, t_info *info)
 	else if (key == KEY_RIGHT && info->key->right == 0)
 		info->key->right = 1;
 	else if (key == KEY_E)
-		info->key->e ^= 1;//xor연산 해놨습니당..
+		info->key->e ^= 1;
 	return (1);
 }
 

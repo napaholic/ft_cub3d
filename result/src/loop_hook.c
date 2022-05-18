@@ -6,25 +6,11 @@
 /*   By: yeju <yeju@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 13:31:53 by yeju              #+#    #+#             */
-/*   Updated: 2022/05/13 16:44:41 by yeju             ###   ########.fr       */
+/*   Updated: 2022/05/18 18:44:27 by yeju             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/Cub3D.h"
-
-// void	cal_vec(t_info *info)
-// {
-// 	floor_cast(info);
-// 	wall_cast(info);
-// 	return ;
-// }
-
-// int	raycasting(t_info *info)
-// {
-// 	cal_vec(info);
-// 	draw(info);
-// 	return (1);
-// }
 
 void	wall_cast(t_info *info, t_wall_data *wall_data, int count)
 {
@@ -41,7 +27,7 @@ int	raycasting(t_info *info)
 {
 	t_wall_data	*wall_data;
 	int			count;
-	int         y;
+	int			y;
 
 	wall_data = (t_wall_data *)malloc(sizeof(t_wall_data));
 	if (!wall_data)

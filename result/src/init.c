@@ -6,28 +6,11 @@
 /*   By: yeju <yeju@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 13:17:02 by yeju              #+#    #+#             */
-/*   Updated: 2022/05/18 18:19:30 by yeju             ###   ########.fr       */
+/*   Updated: 2022/05/18 18:46:32 by yeju             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/Cub3D.h"
-
-//int	init_textures(t_info *info, int num)
-//{
-//	int	idx;
-//
-//	idx = 0;
-//	if (!(info->txt = (t_img **)malloc(sizeof(t_img *) * num - 1)))
-//		return (0);
-//	while (idx < num)
-//	{
-//		if (!(info->txt[idx] = (t_img *)malloc(sizeof(t_img) * 1)))
-//			return (0);
-//		utils_bzero(info->txt[idx], sizeof(t_img));
-//		++idx;
-//	}
-//	return (1);
-//}
 
 int	init_map(t_info *info, char *map_name)
 {
@@ -59,7 +42,7 @@ int	init_player(t_info *info)
 	if (!(info->pos = (t_pos *)malloc(sizeof(t_pos))))
 		return (0);
 	utils_bzero(info->pos, sizeof(t_pos));
-	info->pos->pos_x = -20.0; //pos_set오류시 -20값이기때문에 init을 -20으로!
+	info->pos->pos_x = -20.0;
 	info->pos->pos_y = -20.0;
 	info->pos->dir_x = 1.0;
 	info->pos->dir_y = 0.0;
@@ -93,10 +76,10 @@ int	init_win_img(t_info *info)
 	char	*map;
 	int		init_img_ret;
 
-	map = read_map(info->map->map_name, info); //map 읽기
+	map = read_map(info->map->map_name, info);
 	if (!map)
 		return (0);
-	info->map->world_map = save_map(map, info); //map을 이중배열로 저장 (malloc)
+	info->map->world_map = save_map(map, info);
 	if (!info->map->world_map)
 		return (0);
 	info->win = mlx_new_window(info->mlx, info->win_wid, info->win_hei, "cub3D");

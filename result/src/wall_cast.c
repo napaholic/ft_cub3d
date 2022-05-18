@@ -30,7 +30,7 @@ void	set_texture_data(t_wall_data *wall_data, t_info *info)
 int		set_color(t_wall_data *wall_data, t_info *info)
 {
 	int texY;
-	int color=0; //=0
+	int color=0;
 	int texnum;
 
 	texY = (int)wall_data->tex_pos & (TEX_HEIGHT - 1);

@@ -49,7 +49,7 @@ void	calc_perp_dist(t_wall_data *wall_data, t_info *info)
 	return ;
 }
 
-void	step_progress_until_hit(t_wall_data *wall_data, t_info *info)//벽에 맞을때까지 sideDist 증가. sideDist 가 나중에 perpWallDist 에 사용됨.
+void	step_progress_until_hit(t_wall_data *wall_data, t_info *info)
 {
 	wall_data->hit = 0;
 	while (wall_data->hit == 0)
@@ -70,25 +70,4 @@ void	step_progress_until_hit(t_wall_data *wall_data, t_info *info)//벽에 맞�
 		[wall_data->map_pos_x] == '1')
 			wall_data->hit = 1;
 	}
-} //hit이 wall_data안에 있어서 그걸로 교체
-
-// void	wall_cast(t_info *info)d
-// {
-// 	t_wall_data *wall_data;
-// 	int x;
-// 	int y;
-
-// 	x = -1;
-// 	while (++x < info->win_wid)
-// 	{
-// 		//1. set_DDA
-// 		set_DDA(wall_data, info, x);
-// 		//2. wall_DistCast
-// 		set_wall_data(wall_data, info);
-// 		//3. wall_set_texture_data
-// 		set_texture_data(wall_data, info);
-// 		y = wall_data.draw_start - 1;
-// 		while(++y < wall_data.draw_end)
-// 			info->buf[y][x] = set_color(wall_data, info);
-// 	}
-// }
+}

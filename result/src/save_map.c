@@ -6,7 +6,7 @@
 /*   By: yeju <yeju@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 18:07:07 by yeju              #+#    #+#             */
-/*   Updated: 2022/05/18 15:27:36 by yeju             ###   ########.fr       */
+/*   Updated: 2022/05/18 18:46:53 by yeju             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,9 +112,9 @@ char	**save_map(char *line_map, t_info *info)
 		exit(1);
 	}
 	//test code
-	for (int i = 0; i < info->map->map_height+1; i++)
-		printf("%s\n", info->map->world_map[i]);
-	printf("\n");
+	// for (int i = 0; i < info->map->map_height+1; i++)
+	// 	printf("%s\n", info->map->world_map[i]);
+	// printf("\n");
 	//map check?
 	// save_map_check(map);
 	free(line_map);
