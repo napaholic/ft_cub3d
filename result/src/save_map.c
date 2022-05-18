@@ -6,7 +6,7 @@
 /*   By: yeju <yeju@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 18:07:07 by yeju              #+#    #+#             */
-/*   Updated: 2022/05/18 18:46:53 by yeju             ###   ########.fr       */
+/*   Updated: 2022/05/18 18:49:04 by yeju             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,8 @@ void	set_pos(char **world_map, t_info *info)
 				world_map[hei][wid] == 'E' || world_map[hei][wid] == 'S')
 			{
 				flag += 1;
-				info->pos->pos_x = (double)wid;
-				info->pos->pos_y = (double)hei;
+				info->pos->pos_x = (double)wid + 0.5;
+				info->pos->pos_y = (double)hei + 0.5;
 			}
 			if (world_map[hei][wid] == 'N')
 				get_direction(info, world_map, hei, wid);
