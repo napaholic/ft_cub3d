@@ -41,11 +41,11 @@ int	raycasting(t_info *info)
 		while (++y < info->win_hei)
 		{
 			if (y < wall_data->draw_start)
-				info->buf[count][y] = 0xFFFFFF;
+				info->buf[count][y] = info->ceiling_color;
 			else if (y < wall_data->draw_end)
 				info->buf[count][y] = set_color(wall_data, info);
 			else
-				info->buf[count][y] = 0x000000;
+				info->buf[count][y] = info->floor_color;
 		}
 	}
 	mlx_put_image_to_window(info->mlx, info->win, info->img->img, 0, 0);

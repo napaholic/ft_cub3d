@@ -177,7 +177,7 @@ int	read_color(char *line, int c, int idx, t_info *info)
 	rgb = get_rgb_value(line);
 	if (c == 'F')
 		info->floor_color = rgb;
-	else if (c == 'C')
+	if (c == 'C')
 		info->ceiling_color = rgb;
 	free(line);
 	return (1);
@@ -185,7 +185,6 @@ int	read_color(char *line, int c, int idx, t_info *info)
 
 int	read_map_setting(char *line, int idx, t_info *info)
 {
-	int	ret;
 	int	first;
 	int	second;
 
@@ -197,9 +196,13 @@ int	read_map_setting(char *line, int idx, t_info *info)
 	else
 		return (2);
 	if (first == 'N' || first == 'W' || first == 'E' || first == 'S')
-		ret = read_txt_path(line, first, second, idx, info);
-	// else if (first == 'F' || first == 'C')
-	// 	ret = read_color(line, line[idx], idx, info);
+		if (read_txt_path(line, first, second, idx, info) == 0)
+		{
+			printf("invalid map file format");
+			exit(1);
+		}
+		if (first == 'F' || first == 'C')
+			read_color(line, line[idx], idx, info);
 	return (1);
 }
 
