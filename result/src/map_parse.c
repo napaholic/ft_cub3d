@@ -6,7 +6,7 @@
 /*   By: yeju <yeju@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 18:16:26 by yeju              #+#    #+#             */
-/*   Updated: 2022/05/18 18:45:26 by yeju             ###   ########.fr       */
+/*   Updated: 2022/05/18 20:18:16 by yeju             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -208,6 +208,8 @@ int	map_check(char *line, char **map, int idx, int gnl_ret)
 	if (utils_white_space(line[idx]) || line[idx] == '1' || line[idx] == '0')
 	{
 		*map = utils_strjoin(*map, line);
+		if (*map[i] == '\n' && *map[i + 1] == '\n') //@
+			return (0);
 		if (gnl_ret != 0 && line[idx])
 			*map = utils_strjoin(*map, "\n");
 		// free(line);
