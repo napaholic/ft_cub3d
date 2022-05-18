@@ -6,7 +6,7 @@
 /*   By: yeju <yeju@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/01 15:28:46 by yeju              #+#    #+#             */
-/*   Updated: 2022/05/18 15:28:04 by yeju             ###   ########.fr       */
+/*   Updated: 2022/05/18 18:39:34 by yeju             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,6 @@
 # define TEX_WALL_S		1
 # define TEX_WALL_E		2
 # define TEX_WALL_W		3
-# define TEX_FLOOR_1	4
-# define TEX_FLOOR_2	5
-# define TEX_CEILING	6
 # define TEX_WIDTH      32
 # define TEX_HEIGHT     32
 
@@ -70,8 +67,8 @@ typedef struct	s_img
 typedef struct	s_map
 {
 	char	**world_map;
-	char	*line_map; //-> 구조체에 안넣고 mapsize구한후 바로 free
-	char	*map_name; //->map파일 권한때문에 일단 넣어둠
+	char	*line_map;
+	char	*map_name;
 	int		map_width;
 	int		map_height;
 }				t_map;
@@ -123,31 +120,18 @@ typedef struct	s_wall_data
 	int		draw_end;
 	double	wallx;
 	int		tex_x;
-	double	step_val; //@
-	double	tex_pos; //@
+	double	step_val;
+	double	tex_pos;
 	int		hit;
 }				t_wall_data;
 
-/* floor_data */
-typedef struct	s_floordata
+typedef struct	s_path
 {
-	float	ray_dir_x0;
-	float	ray_dir_x1;
-	float	ray_dir_y0;
-	float	ray_dir_y1;
-	float	row_distance;
-	float	floor_stepX;
-	float	floor_stepY;
-	float	floorX;
-	float	floorY;
-	float	cellX;
-	float	cellY;
-	int		dX;
-	int		dY;
-	int		floorTexture;
-	int		ceiling_texture;
-}				t_floordata;
-
+	char	*path_n;
+	char	*path_s;
+	char	*path_w;
+	char	*path_e;
+}				t_path;
 
 /* main struct */
 typedef struct	s_info
@@ -163,7 +147,7 @@ typedef struct	s_info
 	t_pos	*pos;
 	t_key	*key;
 	t_img	*img;
-//	t_path  *path;
+	t_path  *path;
 	t_map	*map;
 }				t_info;
 
@@ -181,10 +165,7 @@ int		key_release(int key, t_info *info);
 int		close_win(int keycode, int x, int y, void *param);
 void	check_leaks();
 
-/* calc_floor, wall */
-void	set_raydir(t_floordata *floor, t_info *info, int y);
-void	set_texture_vec(t_floordata *floor, t_info *info);
-void	set_texture_num(t_floordata *floor);
+/* calc_wall */
 void	floor_cast(t_info *info);
 void	init_DDA_cast(t_wall_data *wall_data, t_info *info);
 void	calc_perp_dist(t_wall_data *wall_data, t_info *info);
@@ -199,7 +180,6 @@ void    draw(t_info *info);
 void	hook_set(t_info *info);
 int	render(t_info *info);
 void	cal_vec(t_info *info);
-void	render_floor(t_floordata *floor, t_info *info, int cur_x, int cur_y);
 int		raycasting(t_info *info);
 
 /* gnl */
@@ -225,16 +205,16 @@ t_info	*init_info_mlx(void);
 
 /* map_parse.c */
 char	*read_map(char *argv, t_info *info);
-int	read_map_sub(char *line, char **map, t_info *info, int gnl_ret);
+int		read_map_sub(char *line, char **map, t_info *info, int gnl_ret);
 int		read_map_setting(char *line, int idx, t_info *info);
 int		read_color(char *line, int c, int idx, t_info *info);
 //int		read_txt_path(char *line, int first, int second, int idx, t_info *info);
-int	map_check(char *line, char **map, int idx, int gnl_ret);
-int	get_rgb_value(char *line);
+int		map_check(char *line, char **map, int idx, int gnl_ret);
+int		get_rgb_value(char *line);
 
 int		utils_check_txt_execute(char *path);
 int		utils_check_txt_path(char *line);
-int	utils_check_color(char *line, int c, int idx);
+int		utils_check_color(char *line, int c, int idx);
 //int	texture_set(t_info *info, char *path, int idx);
 
 
@@ -266,8 +246,8 @@ int		utils_isprint(int c);
 int		utils_isdigit(int c);
 
 /* utils2.c */
-char		**utils_split(char const *s, char c);
-int			utils_atoi(const char *str);
+char	**utils_split(char const *s, char c);
+int		utils_atoi(const char *str);
 void	utils_free_split();
 
 /* wall_cast.c */
@@ -276,8 +256,8 @@ void	set_texture_data(t_wall_data *wall_data, t_info *info);
 int		set_color(t_wall_data *wall_data, t_info *info);
 
 /* load_texture.c */
-void    init_texture(t_info *info);
-void    load_texture(t_info *info);
+void	init_texture(t_info *info);
+void	load_texture(t_info *info);
 void	load_image(t_info *info, int *texture, char *path, t_img *img);
 
 /* loop_hook.c */

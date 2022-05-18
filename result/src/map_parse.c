@@ -6,7 +6,7 @@
 /*   By: yeju <yeju@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 18:16:26 by yeju              #+#    #+#             */
-/*   Updated: 2022/05/13 09:10:23 by yeju             ###   ########.fr       */
+/*   Updated: 2022/05/18 18:19:14 by yeju             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,32 +112,31 @@ char *get_texture_path(char *line, int idx)
 	return (path);
 }
 
-//int	read_txt_path(char *line, int first, int second, int idx, t_info *info)
-//{
-//	char	*path;
-//
-//	if (!utils_check_txt_path(line))
-//	{
-//		printf("Error\n wrong path: %s\n", line);
-//		exit(1);
-//	}
-//	path = get_texture_path(line, idx); //path만 따로 저장하는 함수
-//	if (!path)
-//		return (0);
-//	utils_check_txt_execute(path); //path가 유효한지 확인
-//	while (utils_white_space(line[idx]))
-//		++idx;
-//	if (first == 'N' && second == 'O')
-//		return (texture_set(info, path, TEX_WALL_N));
-//	if (first == 'S' && second == 'O')
-//		return (texture_set(info, path, TEX_WALL_S));
-//	if (first == 'E' && second == 'A')
-//		return (texture_set(info, path, TEX_WALL_E));
-//	if (first == 'W' && second == 'E')
-//		return (texture_set(info, path, TEX_WALL_W));
-//	else
-//		return (0);
-//}
+int	read_txt_path(char *line, int first, int second, int idx, t_info *info)
+{
+	char	*path;
+
+	if (!utils_check_txt_path(line))
+	{
+		printf("Error\n wrong path: %s\n", line);
+		exit(1);
+	}
+	path = get_texture_path(line, idx); //path만 따로 저장하는 함수
+	if (!path)
+		return (0);
+	utils_check_txt_execute(path); //path가 유효한지 확인
+	while (utils_white_space(line[idx]))
+		++idx;
+	if (first == 'N' && second == 'O')
+		info->path->path_n = path;
+	if (first == 'S' && second == 'O')
+		info->path->path_s = path;
+	if (first == 'E' && second == 'A')
+		info->path->path_e = path;
+	if (first == 'W' && second == 'E')
+		info->path->path_w = path;
+	return (1);
+}
 
 int	utils_check_color(char *line, int c, int idx)
 {
@@ -221,17 +220,11 @@ int	read_map_setting(char *line, int idx, t_info *info)
 	}
 	else
 		return (2);
-	first = first + 1;
-	second = second + 1; //test code
-	info->win_hei = info->win_hei;//<- test code
-//	if (first == 'N' || first == 'W' || first == 'E' || first == 'S')
-//		ret = read_txt_path(line, first, second, idx, info);
-//	else if (first == 'F' || first == 'C')
-//		ret = read_color(line, line[idx], idx, info);
-//	else
-//		ret = 2;
-	ret = 1;
-	return (ret);
+	if (first == 'N' || first == 'W' || first == 'E' || first == 'S')
+		ret = read_txt_path(line, first, second, idx, info);
+	// else if (first == 'F' || first == 'C')
+	// 	ret = read_color(line, line[idx], idx, info);
+	return (1);
 }
 
 int	map_check(char *line, char **map, int idx, int gnl_ret)

@@ -6,7 +6,7 @@
 /*   By: yeju <yeju@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 13:17:02 by yeju              #+#    #+#             */
-/*   Updated: 2022/05/18 15:18:40 by yeju             ###   ########.fr       */
+/*   Updated: 2022/05/18 18:19:30 by yeju             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,9 +108,17 @@ int	init_win_img(t_info *info)
 	return (1);
 }
 
+int	init_path(t_info *info)
+{
+	if (!(info->path = (t_path *)malloc(sizeof(t_path))))
+		return (0);
+	utils_bzero(info->path, sizeof(t_path));
+	return (1);
+}
+
 int	init_info(t_info *info, char *argv)
 {
-	if (!init_map(info, argv) || \
+	if (!init_map(info, argv) || !init_path(info) || \
 	!init_key(info) || !init_player(info) || !init_win_img(info))
 		return (0);
 	return (1);

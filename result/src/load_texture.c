@@ -19,10 +19,10 @@ void    load_texture(t_info *info)
 	t_img   img;
 
 	init_texture(info);
-	load_image(info, info->texture[0], "textures/blue_block.xpm", &img);
-	load_image(info, info->texture[1], "textures/green_block.xpm", &img);
-	load_image(info, info->texture[2], "textures/red_block.xpm", &img);
-	load_image(info, info->texture[3], "textures/yellow_block.xpm", &img);
+	load_image(info, info->texture[0], info->path->path_n, &img);
+	load_image(info, info->texture[1], info->path->path_s, &img);
+	load_image(info, info->texture[2], info->path->path_e, &img);
+	load_image(info, info->texture[3], info->path->path_w, &img);
 }
 
 void    init_texture(t_info *info)
