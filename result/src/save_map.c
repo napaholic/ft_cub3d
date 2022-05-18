@@ -6,7 +6,7 @@
 /*   By: yeju <yeju@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 18:07:07 by yeju              #+#    #+#             */
-/*   Updated: 2022/05/18 15:18:02 by yeju             ###   ########.fr       */
+/*   Updated: 2022/05/18 15:27:36 by yeju             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,25 +89,34 @@ char	**save_map(char *line_map, t_info *info)
 	idx = 0;
 	free(info->map->world_map);
 	save_map_get_size(line_map, info);
-	info->map->world_map = (char **)malloc(sizeof(char *) * info->map->map_height);
+	info->map->world_map = (char **)malloc(sizeof(char *) * \
+		info->map->map_height);
 	utils_bzero(info->map->world_map, sizeof(char *) * info->map->map_height);
 	while (idx++ < info->map->map_height)
 	{
-		info->map->world_map[idx] = (char *)malloc(sizeof(char) * info->map->map_width);
-		utils_bzero(info->map->world_map[idx], sizeof(char) * info->map->map_width);
+		info->map->world_map[idx] = (char *)malloc(sizeof(char) * \
+			info->map->map_width);
+		utils_bzero(info->map->world_map[idx], sizeof(char) * \
+			info->map->map_width);
 	}
 	info->map->world_map = utils_split(line_map, '\n');
-
 	set_pos(info->map->world_map, info);
 	if (info->pos->pos_x == -20.0 || info->pos->pos_y == -20.0)
 	{
 		printf("Error\n pos setting");
 		exit(1);
 	}
-
+	if (!flood_fill((int)info->pos->pos_x, (int)info->pos->pos_y, info))
+	{
+		printf("Error\n incorrect map");
+		exit(1);
+	}
+	//test code
+	for (int i = 0; i < info->map->map_height+1; i++)
+		printf("%s\n", info->map->world_map[i]);
+	printf("\n");
 	//map check?
 	// save_map_check(map);
-	
 	free(line_map);
 	return (info->map->world_map);
 }

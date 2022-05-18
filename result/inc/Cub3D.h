@@ -6,7 +6,7 @@
 /*   By: yeju <yeju@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/01 15:28:46 by yeju              #+#    #+#             */
-/*   Updated: 2022/05/18 15:08:59 by yeju             ###   ########.fr       */
+/*   Updated: 2022/05/18 15:28:04 by yeju             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -286,6 +286,10 @@ void	hook_set(t_info *info);
 
 /* save_map.c */
 char	**save_map(char *line_map, t_info *info);
+
+/* flood_fill.c */
+int	check_fill(t_info *info);
+int	flood_fill(int pox, int poy, t_info *info);
 
 /* get_direction.c */
 void	get_direction(t_info *info, char **world_map, int hei, int wid);
