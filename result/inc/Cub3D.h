@@ -178,7 +178,7 @@ void    draw(t_info *info);
 
 /* loop_hook.c */
 void	hook_set(t_info *info);
-int	render(t_info *info);
+int		render(t_info *info);
 void	cal_vec(t_info *info);
 int		raycasting(t_info *info);
 
@@ -225,30 +225,31 @@ int		read_map_color(char *line, char fc, t_info *info);
 
 /* mov_cal.c */
 int		empty_chk_map(t_map *map, int x, int y);
-int		player_move_left(t_info *info);
-int		player_move_right(t_info *info);
 int		rotate_left(t_info *info);
 int		rotate_right(t_info *info);
+int		rotate_mouse(t_info *info);
 
 /* movement.c */
 int		player_move_front(t_info *info);
 int		player_move_back(t_info *info);
 int		rotate_left(t_info *info);
+int		player_move_left(t_info *info);
+int		player_move_right(t_info *info);
+
+/* movement2.c */
 int		rotate_right(t_info *info);
 int		key_update(t_info *info);
 
 /* utils */
-int		utils_white_space(char c);
-void	utils_bzero(void *s, size_t n);
-int		utils_read_another(char *line, int i);
-int		utils_read(char **map, char *line, t_info *info);
-int		utils_isprint(int c);
-int		utils_isdigit(int c);
-
-/* utils2.c */
 char	**utils_split(char const *s, char c);
 int		utils_atoi(const char *str);
-void	utils_free_split();
+void	utils_free_split(char **split_rgb);
+
+/* utils2.c */
+int		utils_white_space(char c);
+int		utils_isprint(int c);
+int		utils_isdigit(int c);
+void	utils_bzero(void *s, size_t n);
 
 /* wall_cast.c */
 void	set_wall_data(t_wall_data *wall_data, t_info *info);
