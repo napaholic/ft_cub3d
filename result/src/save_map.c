@@ -6,7 +6,7 @@
 /*   By: yeju <yeju@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 18:07:07 by yeju              #+#    #+#             */
-/*   Updated: 2022/05/18 20:17:57 by yeju             ###   ########.fr       */
+/*   Updated: 2022/05/19 15:17:39 by yeju             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,16 @@ void	set_pos(char **world_map, t_info *info)
 	}
 }
 
+int	check_player_in_wall(int pox, int poy, t_info *info)
+{
+	if (info->map->world_map[poy - 1][pox] == '0' || info->map->world_map[poy - 1][pox] == '1')
+		if (info->map->world_map[poy + 1][pox] == '0' || info->map->world_map[poy + 1][pox] == '1')
+			if (info->map->world_map[poy][pox - 1] == '0' || info->map->world_map[poy][pox - 1] == '1')
+				if (info->map->world_map[poy][pox + 1] == '0' || info->map->world_map[poy][pox + 1] == '1')
+					return (1);
+	return (0);
+}
+
 char	**save_map(char *line_map, t_info *info)
 {
 	int	idx;
@@ -118,6 +128,11 @@ char	**save_map(char *line_map, t_info *info)
 		printf("Error\n pos setting");
 		exit(1);
 	}
+	// if (!check_player_in_wall((int)info->pos->pos_x, (int)info->pos->pos_y, info))
+	// {
+	// 	printf("Error\n incorrect position");
+	// 	exit(1);
+	// }
 	if (!flood_fill((int)info->pos->pos_x, (int)info->pos->pos_y, info))
 	{
 		printf("Error\n incorrect map");

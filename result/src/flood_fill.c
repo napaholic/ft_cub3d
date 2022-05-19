@@ -6,7 +6,7 @@
 /*   By: yeju <yeju@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 16:14:25 by yeju              #+#    #+#             */
-/*   Updated: 2022/05/18 20:46:49 by yeju             ###   ########.fr       */
+/*   Updated: 2022/05/19 14:03:58 by yeju             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ int	flood_fill(int pox, int poy, t_info *info)
 	
 	idx = 0;
 	info->map->world_map[poy][pox] = '2';
+	//test code
 	for (int i = 0; i < info->map->map_height+1; i++)
 		printf("%s\n", info->map->world_map[i]);
 	printf("\n");
