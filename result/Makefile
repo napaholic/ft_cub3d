@@ -1,4 +1,4 @@
-NAME = Cub3D
+NAME = cub3d
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -g
 MFLAGS = -L ./mlx -lmlx -framework OpenGL -framework AppKit -fsanitize=address
@@ -16,7 +16,7 @@ SRCS =	$(addprefix src/, Cub3D.c \
 					draw_floor.c \
 					load_texture.c \
 					save_map.c \
-					hook_func.c \e
+					hook_func.c \
 					get_direction.c \
 					flood_fill.c \
 					utils.c	\
