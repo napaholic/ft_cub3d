@@ -6,7 +6,7 @@
 /*   By: yeju <yeju@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 16:14:25 by yeju              #+#    #+#             */
-/*   Updated: 2022/05/19 16:06:05 by yeju             ###   ########.fr       */
+/*   Updated: 2022/05/19 21:27:26 by yeju             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ int	is_save(int x, int y, t_info *info)
 
 int	flood_fill(int pox, int poy, t_info *info)
 {
-				//동 서 남 북
 	int dx[4] = {1, 0, -1, 0};
 	int dy[4] = {0, 1, 0, -1};
 	int idx;
@@ -59,9 +58,9 @@ int	flood_fill(int pox, int poy, t_info *info)
 	idx = 0;
 	info->map->world_map[poy][pox] = '2';
 	//test code
-	for (int i = 0; i < info->map->map_height+1; i++)
-		printf("%s\n", info->map->world_map[i]);
-	printf("\n");
+	// for (int i = 0; i < info->map->map_height+1; i++)
+	// 	printf("%s\n", info->map->world_map[i]);
+	// printf("\n");
 	while (idx < 4)
 	{
 		nx = pox + dx[idx];

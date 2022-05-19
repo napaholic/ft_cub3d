@@ -7,11 +7,6 @@ int	empty_chk_map(t_map *map, int x, int y)
 	return (1);
 }
 
-//void	vec_mrot(t_info *info, rot_speed)
-//{
-//
-//}
-
 int	rotate_mouse(t_info *info)
 {
 	int	x;

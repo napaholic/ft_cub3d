@@ -42,9 +42,11 @@ void	set_dda(t_wall_data *wall_data, t_info *info, int count)
 void	calc_perp_dist(t_wall_data *wall_data, t_info *info)
 {
 	if (wall_data->side == 0)
-		wall_data->perp_wall_dist = (wall_data->map_pos_x - info->pos->pos_x + (1 - wall_data->step_x) / 2) / wall_data->raydir_x;
+		wall_data->perp_wall_dist = (wall_data->map_pos_x - info->pos->pos_x + \
+			(1 - wall_data->step_x) / 2) / wall_data->raydir_x;
 	else
-		wall_data->perp_wall_dist = (wall_data->map_pos_y - info->pos->pos_y + (1 - wall_data->step_y) / 2) / wall_data->raydir_y;
+		wall_data->perp_wall_dist = (wall_data->map_pos_y - info->pos->pos_y + \
+			(1 - wall_data->step_y) / 2) / wall_data->raydir_y;
 
 	return ;
 }

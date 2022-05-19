@@ -6,7 +6,7 @@
 /*   By: yeju <yeju@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 15:19:45 by yeju              #+#    #+#             */
-/*   Updated: 2022/05/17 15:50:42 by yeju             ###   ########.fr       */
+/*   Updated: 2022/05/19 21:27:34 by yeju             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ void	set_north(t_info *info, int hei, int wid)
 	info->pos->plane_x = 0.66;
 	info->pos->plane_y = 0.0;
 	info->map->world_map[hei][wid] = '0';
-	printf("\nnorth\n");
 }
 
 void	set_west(t_info *info, int hei, int wid)
@@ -29,7 +28,6 @@ void	set_west(t_info *info, int hei, int wid)
 	info->pos->plane_x = 0.0;
 	info->pos->plane_y = -0.66;
 	info->map->world_map[hei][wid] = '0';
-	printf("\nwest\n");
 }
 
 void	set_east(t_info *info, int hei, int wid)
@@ -39,7 +37,6 @@ void	set_east(t_info *info, int hei, int wid)
 	info->pos->plane_x = 0.0;
 	info->pos->plane_y = 0.66;
 	info->map->world_map[hei][wid] = '0';
-	printf("\neast\n");
 }
 
 void	set_south(t_info *info, int hei, int wid)
@@ -50,7 +47,6 @@ void	set_south(t_info *info, int hei, int wid)
 	info->pos->plane_y = 0.0;
 	info->map->world_map[hei][wid] = '0';
 	//worldmap이후에설정하는지확인
-	printf("\nsouth\n");
 }
 
 void	get_direction(t_info *info, char **world_map, int hei, int wid)
