@@ -6,7 +6,7 @@
 /*   By: yeju <yeju@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 16:14:25 by yeju              #+#    #+#             */
-/*   Updated: 2022/05/19 14:03:58 by yeju             ###   ########.fr       */
+/*   Updated: 2022/05/19 16:06:05 by yeju             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,12 @@ int	check_fill(t_info *info)
 	return (1);
 }
 
+int	check_player_in_wall(int nx, int ny, t_info *info)
+{
+	if (nx < 0 || nx > info->map->map_width || ny < 0 || ny > info->map->map_height)
+		return (0);
+	return (1);
+}
 
 int	is_save(int x, int y, t_info *info)
 {
@@ -60,10 +66,13 @@ int	flood_fill(int pox, int poy, t_info *info)
 	{
 		nx = pox + dx[idx];
 		ny = poy + dy[idx];
+		if (!check_player_in_wall(nx, ny, info))
+		{
+			printf("Error\n incorrect position");
+			exit(1);
+		}
 		while (is_save(nx, ny, info) && info->map->world_map[ny][nx] == '0')
 		{
-			// printf("nx, ny: %d, %d\n", nx, ny);
-			// info->map->world_map[ny][nx] = '2';
 			flood_fill(nx, ny, info);
 		}
 		idx++;
