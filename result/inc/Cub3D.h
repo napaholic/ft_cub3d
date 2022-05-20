@@ -6,7 +6,7 @@
 /*   By: yeju <yeju@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/01 15:28:46 by yeju              #+#    #+#             */
-/*   Updated: 2022/05/20 20:39:59 by yeju             ###   ########.fr       */
+/*   Updated: 2022/05/20 20:56:17 by yeju             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,7 @@ typedef struct s_word
 {
 	int			first;
 	int			second;
+	int			gnl_ret;
 }				t_word;
 
 typedef struct s_info
@@ -208,8 +209,8 @@ int		utils_check_color(char *line, int c, int idx);
 int		get_rgb_value(char *line);
 int		read_color(char *line, int c, int idx, t_info *info);
 int		read_map_setting(char *line, int idx, t_info *info);
-int		map_check(char *line, char **map, int idx, int gnl_ret, t_info *info);
-int		read_map_sub(char *line, char **map, t_info *info, int gnl_ret);
+int		map_check(char *line, char **map, int idx, t_info *info);
+int		read_map_sub(char *line, char **map, t_info *info);
 char	*read_map(char *argv, t_info *info);
 
 int		player_move_front(t_info *info);
