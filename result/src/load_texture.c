@@ -14,9 +14,9 @@ void	load_image(t_info *info, int *texture, char *path, t_img *img)
 	mlx_destroy_image(info->mlx, img->img);
 }
 
-void    load_texture(t_info *info)
+void	load_texture(t_info *info)
 {
-	t_img   img;
+	t_img	img;
 
 	init_texture(info);
 	load_image(info, info->texture[0], info->path->path_n, &img);
@@ -25,7 +25,7 @@ void    load_texture(t_info *info)
 	load_image(info, info->texture[3], info->path->path_w, &img);
 }
 
-void    init_texture(t_info *info)
+void	init_texture(t_info *info)
 {
 	info->texture = (int **)malloc(sizeof(int *) * 4);
 	for(int i = 0; i < 4; i++)

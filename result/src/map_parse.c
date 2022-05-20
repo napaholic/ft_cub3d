@@ -6,7 +6,7 @@
 /*   By: yeju <yeju@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 18:16:26 by yeju              #+#    #+#             */
-/*   Updated: 2022/05/20 09:18:33 by yeju             ###   ########.fr       */
+/*   Updated: 2022/05/20 10:19:40 by yeju             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,16 +39,16 @@ int	utils_check_txt_path(char *line)
 //txt path가 유효한지 확인
 int	utils_check_txt_execute(char *path)
 {
-	// int	fd;
+	int	fd;
 	int	len;
 
 	len = utils_strlen(path);
-	// fd = open(path, O_RDONLY); //이 부분은 texture_set의 mlx_xpm_file_to_image에서 체크해준다.
-	// if (fd == -1)
-	// {
-	// 	close(fd);
-	// 	return (0);
-	// }
+	fd = open(path, O_RDONLY); //이 부분은 texture_set의 mlx_xpm_file_to_image에서 체크해준다.
+	if (fd == -1)
+	{
+		close(fd);
+		return (0);
+	}
 	if (path[len - 1] != 'm' || path[len - 2] != 'p' || \
 		path[len - 3] != 'x' || path[len - 4] != '.')
 		return (0);
@@ -105,7 +105,11 @@ int	read_txt_path(char *line, int first, int second, int idx, t_info *info)
 	path = get_texture_path(line, idx);
 	if (!path)
 		return (0);
-	utils_check_txt_execute(path);
+	if (!utils_check_txt_execute(path))
+	{
+		printf("Error\n wrong path: %s\n", line);
+		exit(1);
+	}
 	while (utils_white_space(line[idx]))
 		++idx;
 	if (first == 'N' && second == 'O')

@@ -6,7 +6,7 @@
 /*   By: yeju <yeju@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 21:30:12 by yeju              #+#    #+#             */
-/*   Updated: 2022/05/20 09:58:45 by yeju             ###   ########.fr       */
+/*   Updated: 2022/05/20 10:24:25 by yeju             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,6 @@ int	check_fill(t_info *info)
 	int	y;
 	int	x;
 
-	//test code
-	// for (int i = 0; i < info->map->map_height+1; i++)
-	// 	printf("%s\n", info->map->world_map[i]);
-	// printf("\n");
 	y = 0;
 	while (y < info->map->map_height)
 	{
@@ -31,15 +27,19 @@ int	check_fill(t_info *info)
 			// printf("1: %d\n", info->map->world_map[y][x] != '1');
 			// printf("2: %d\n", info->map->world_map[y][x] != '2');
 			// printf("x: %d, y: %d\n", x, y);
+			if (info->map->world_map[y][x] == '\0')
+			{
+				y++;
+			}
+			if (utils_white_space(info->map->world_map[y][x]))
+				x++;
 			if (!utils_white_space(info->map->world_map[y][x]) && !(info->map->world_map[y][x] == '1' || info->map->world_map[y][x] == '2'))
 			{
-				if (info->map->world_map[y][x] == '\n')
-				{
-					y++;
-					// printf("test %d", info->map->world_map[y][x]);
-				}
-				else
-					return (0);
+				// else
+				// {
+				// printf("test %d", info->map->world_map[y][x]);
+				return (0);
+				// }
 			}
 			x++;
 		}
@@ -50,7 +50,7 @@ int	check_fill(t_info *info)
 
 int	check_player_in_wall(int nx, int ny, t_info *info)
 {
-	if (nx < 0 || nx > info->map->map_width || ny < 0 || ny > info->map->map_height)
+	if (nx < 0 || nx > info->map->map_width - 1 || ny < 0 || ny > info->map->map_height - 1)
 		return (0);
 	return (1);
 }
@@ -70,6 +70,10 @@ int	flood_fill(int pox, int poy, t_info *info)
 	
 	idx = 0;
 	info->map->world_map[poy][pox] = '2';
+	//test code
+	// for (int i = 0; i < info->map->map_height+1; i++)
+	// 	printf("%s\n", info->map->world_map[i]);
+	// printf("\n");
 	while (idx < 8)
 	{
 		nx = pox + dx[idx];
