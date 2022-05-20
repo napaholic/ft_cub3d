@@ -12,6 +12,12 @@
 
 #include "../inc/Cub3D.h"
 
+void	print_exit(char *str)
+{
+	printf("%s", str);
+	exit(1);
+}
+
 void	save_map_get_size(char *line_map, t_info *info)
 {
 	size_t	i;
@@ -81,10 +87,7 @@ void	set_pos(char **world_map, t_info *info)
 		hei++;
 	}
 	if (flag != 1)
-	{
-		printf("Error\n there is %d player\n", flag);
-		exit(1);
-	}
+		print_exit("Error\n there is multi player\n");
 }
 
 char	**save_map(char *line_map, t_info *info)
@@ -92,7 +95,8 @@ char	**save_map(char *line_map, t_info *info)
 	int	idx;
 
 	idx = 0;
-	free(info->map->world_map);
+	if (info->map->world_map)
+		free(info->map->world_map);
 	save_map_get_size(line_map, info);
 	info->map->world_map = (char **)malloc(sizeof(char *) * \
 		info->map->map_height);
@@ -105,17 +109,13 @@ char	**save_map(char *line_map, t_info *info)
 			info->map->map_width);
 	}
 	info->map->world_map = utils_split(line_map, '\n');
+	if (!*info->map->world_map)
+		print_exit("Error\n empty map");
 	set_pos(info->map->world_map, info);
 	if (info->pos->pos_x == -20.0 || info->pos->pos_y == -20.0)
-	{
-		printf("Error\n pos setting");
-		exit(1);
-	}
+		print_exit("Error\n incorrect map");
 	if (!flood_fill((int)info->pos->pos_x, (int)info->pos->pos_y, info))
-	{
-		printf("Error\n incorrect map");
-		exit(1);
-	}
+		print_exit("Error\n pos setting");
 	free(line_map);
 	return (info->map->world_map);
 }

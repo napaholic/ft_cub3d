@@ -33,7 +33,6 @@ int	check_fill(t_info *info)
 			}
 			while (utils_white_space(info->map->world_map[y][x]))
 				x++;
-			printf("%d, %d\n", y, x);
 			if (!(utils_white_space(info->map->world_map[y][x]) || info->map->world_map[y][x] == '1' || info->map->world_map[y][x] == '2'))
 			{
 				return (0);

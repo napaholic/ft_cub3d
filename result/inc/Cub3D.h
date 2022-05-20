@@ -268,6 +268,7 @@ void	hook_set(t_info *info);
 
 /* save_map.c */
 char	**save_map(char *line_map, t_info *info);
+void    print_exit(char *str);
 
 /* flood_fill.c */
 int	check_fill(t_info *info);
