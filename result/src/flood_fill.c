@@ -6,7 +6,7 @@
 /*   By: yeju <yeju@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 21:30:12 by yeju              #+#    #+#             */
-/*   Updated: 2022/05/20 21:00:21 by yeju             ###   ########.fr       */
+/*   Updated: 2022/05/20 21:46:52 by yeju             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,14 @@ int	check_fill_2(t_info *info, int x, int y)
 		info->map->world_map[y][x] == '1' || \
 		info->map->world_map[y][x] == '2'))
 	{
+		// for (int i = 0; i < info->map->map_width; i++)
+		// {
+		// 	for (int j = 0; j < info->map->map_width; j++)
+		// 	{
+		// 		printf("%c", info->map->world_map[i][j]);
+		// 	}
+		// 	printf("\n");
+		// }
 		return (0);
 	}
 	return (1);
