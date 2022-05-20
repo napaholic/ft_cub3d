@@ -6,7 +6,7 @@
 /*   By: yeju <yeju@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 11:20:24 by yeju              #+#    #+#             */
-/*   Updated: 2022/05/20 20:56:40 by yeju             ###   ########.fr       */
+/*   Updated: 2022/05/20 21:19:21 by yeju             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,10 @@ char	*read_map(char *argv, t_info *info)
 	utils_bzero(map, sizeof(char));
 	line = (char *)malloc(sizeof(char) * 1);
 	utils_bzero(line, sizeof(char));
-	while ((info->word->gnl_ret = get_next_line(fd, &line)) != -1)
+	info->word->gnl_ret = 0;
+	while (info->word->gnl_ret != -1)
 	{
+		info->word->gnl_ret = get_next_line(fd, &line);
 		if (line && !read_map_sub(line, &map, info))
 			return (0);
 		line = NULL;
