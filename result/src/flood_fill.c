@@ -6,11 +6,32 @@
 /*   By: yeju <yeju@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 21:30:12 by yeju              #+#    #+#             */
-/*   Updated: 2022/05/20 16:10:35 by yeju             ###   ########.fr       */
+/*   Updated: 2022/05/20 20:11:25 by yeju             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/Cub3D.h"
+
+int	check_fill_2(t_info *info, int x, int y)
+{
+	if (info->map->world_map[y][x] == '\0')
+	{
+		if (y == info->map->map_height - 1)
+			return (0);
+		else
+			y++;
+		x = 0;
+	}
+	while (utils_white_space(info->map->world_map[y][x]))
+		x++;
+	if (!(utils_white_space(info->map->world_map[y][x]) || \
+		info->map->world_map[y][x] == '1' || \
+		info->map->world_map[y][x] == '2'))
+	{
+		return (0);
+	}
+	return (1);
+}
 
 int	check_fill(t_info *info)
 {
@@ -23,20 +44,8 @@ int	check_fill(t_info *info)
 		x = 0;
 		while (x < info->map->map_width)
 		{
-			if (info->map->world_map[y][x] == '\0')
-			{
-				if (y == info->map->map_height - 1)
-					break;
-				else
-					y++;
-				x = 0;
-			}
-			while (utils_white_space(info->map->world_map[y][x]))
-				x++;
-			if (!(utils_white_space(info->map->world_map[y][x]) || info->map->world_map[y][x] == '1' || info->map->world_map[y][x] == '2'))
-			{
+			if (!check_fill_2(info, x, y))
 				return (0);
-			}
 			x++;
 		}
 		y++;

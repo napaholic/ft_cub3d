@@ -6,7 +6,7 @@
 /*   By: yeju <yeju@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/01 15:28:46 by yeju              #+#    #+#             */
-/*   Updated: 2022/05/20 19:54:06 by yeju             ###   ########.fr       */
+/*   Updated: 2022/05/20 20:23:05 by yeju             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,6 +119,12 @@ typedef struct s_path
 	char		*path_e;
 }				t_path;
 
+typedef struct s_word
+{
+	int			first;
+	int			second;
+}				t_word;
+
 typedef struct s_info
 {
 	void		*mlx;
@@ -135,7 +141,8 @@ typedef struct s_info
 	t_img		*img;
 	t_path		*path;
 	t_map		*map;
-}				t_info;
+	t_word		*word;
+	}				t_info;
 
 void	init_dda_cast(t_wall_data *wall_data, t_info *info);
 void	set_dda(t_wall_data *wall_data, t_info *info, int count);
@@ -144,6 +151,7 @@ void	step_progress_until_hit(t_wall_data *wall_data, t_info *info);
 void	draw(t_info *info);
 
 int		check_fill(t_info *info);
+int		check_fill_2(t_info *info, int x, int y);
 int		check_player_in_wall(int nx, int ny, t_info *info);
 int		is_save(int x, int y, t_info *info);
 int		flood_fill(int pox, int poy, t_info *info);
@@ -193,7 +201,8 @@ int		utils_check_txt_execute(char *path);
 char	*utils_substr(char const *s, unsigned int start, size_t len);
 int		utils_get_size(char *str, int idx);
 char	*get_texture_path(char *line, int idx);
-int		read_txt_path(char *line, int first, int second, int idx, t_info *info);
+int		read_txt_path(char *line, int idx, t_info *info);
+int		check_path(char **path, char *line, int idx);
 int		utils_check_color(char *line, int c, int idx);
 int		get_rgb_value(char *line);
 int		read_color(char *line, int c, int idx, t_info *info);
@@ -211,8 +220,10 @@ int		rotate_right(t_info *info);
 int		key_update(t_info *info);
 
 void	save_map_get_size(char *line_map, t_info *info);
+void	save_map_get_size_2(char *line_map, t_info *info, int hei, int i);
 void	set_pos_2(char **world_map, t_info *info, int hei, int wid);
 void	set_pos(char **world_map, t_info *info);
+void	save_map_2(char *line_map, t_info *info);
 char	**save_map(char *line_map, t_info *info);
 
 int		utils_count_words(const char *str, char c);

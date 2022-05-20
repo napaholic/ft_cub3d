@@ -17,9 +17,11 @@ SRCS =	$(addprefix src/, Cub3D.c \
 					map_parse.c \
 					map_parse2.c \
 					map_parse3.c \
+					read_color.c \
 					movement.c \
 					movement2.c \
 					save_map.c \
+					set_pos.c \
 					utils.c	\
 					utils2.c \
 					wall_cast.c)

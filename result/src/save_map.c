@@ -6,36 +6,21 @@
 /*   By: yeju <yeju@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 18:07:07 by yeju              #+#    #+#             */
-/*   Updated: 2022/05/20 19:48:15 by yeju             ###   ########.fr       */
+/*   Updated: 2022/05/20 20:03:18 by yeju             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/Cub3D.h"
 
-void	save_map_get_size(char *line_map, t_info *info)
+void	save_map_get_size_2(char *line_map, t_info *info, int hei, int i)
 {
-	size_t	i;
 	int		wid;
 	int		wid2;
-	int		hei;
 
 	i = 0;
 	wid = 0;
 	wid2 = 0;
-	hei = 0;
-	while (line_map[i] != '\0')
-	{
-		if (line_map[i] == '\n')
-		{
-			if (i != utils_strlen(line_map) - 1)
-			{
-				++hei;
-			}
-		}
-		i++;
-	}
 	info->map->map_height = hei;
-	i = 0;
 	while (hei--)
 	{
 		info->map->map_width = wid2;
@@ -48,48 +33,29 @@ void	save_map_get_size(char *line_map, t_info *info)
 	return ;
 }
 
-void	set_pos_2(char **world_map, t_info *info, int hei, int wid)
+void	save_map_get_size(char *line_map, t_info *info)
 {
-	if (world_map[hei][wid] == 'N')
-		get_direction(info, world_map, hei, wid);
-	else if (world_map[hei][wid] == 'W')
-		get_direction(info, world_map, hei, wid);
-	else if (world_map[hei][wid] == 'E')
-		get_direction(info, world_map, hei, wid);
-	else if (world_map[hei][wid] == 'S')
-		get_direction(info, world_map, hei, wid);
-}
+	size_t	i;
+	int		hei;
 
-void	set_pos(char **world_map, t_info *info)
-{
-	int	wid;
-	int	hei;
-	int	flag;
-
-	flag = 0;
+	i = 0;
 	hei = 0;
-	while (hei <= info->map->map_height)
+	while (line_map[i] != '\0')
 	{
-		wid = 0;
-		while (wid <= info->map->map_width)
+		if (line_map[i] == '\n')
 		{
-			if (world_map[hei][wid] == 'N' || world_map[hei][wid] == 'W' || \
-				world_map[hei][wid] == 'E' || world_map[hei][wid] == 'S')
+			if (i != utils_strlen(line_map) - 1)
 			{
-				flag += 1;
-				info->pos->pos_x = (double)wid + 0.5;
-				info->pos->pos_y = (double)hei + 0.5;
+				++hei;
 			}
-			set_pos_2(world_map, info, hei, wid);
-			wid++;
 		}
-		hei++;
+		i++;
 	}
-	if (flag != 1)
-		print_exit("Error\n there is multi player\n");
+	save_map_get_size_2(line_map, info, hei, i);
+	return ;
 }
 
-char	**save_map(char *line_map, t_info *info)
+void	save_map_2(char *line_map, t_info *info)
 {
 	int	idx;
 
@@ -107,6 +73,11 @@ char	**save_map(char *line_map, t_info *info)
 		utils_bzero(info->map->world_map[idx], sizeof(char) * \
 			info->map->map_width);
 	}
+}
+
+char	**save_map(char *line_map, t_info *info)
+{
+	save_map_2(line_map, info);
 	info->map->world_map = utils_split(line_map, '\n');
 	if (!*info->map->world_map)
 		print_exit("Error\n empty map");
