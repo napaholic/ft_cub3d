@@ -6,7 +6,7 @@
 /*   By: yeju <yeju@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 11:17:45 by yeju              #+#    #+#             */
-/*   Updated: 2022/05/20 11:43:02 by yeju             ###   ########.fr       */
+/*   Updated: 2022/05/20 19:40:31 by yeju             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,17 +41,26 @@ void	load_texture(t_info *info)
 
 void	init_texture(t_info *info)
 {
+	int	i;
+	int	j;
+
+	i = 0;
 	info->texture = (int **)malloc(sizeof(int *) * 4);
-	for (int i = 0; i < 4; i++)
+	while (i < 4)
 	{
 		info->texture[i] = (int *)malloc(sizeof(int) * \
 			(info->win_hei * info->win_wid));
+		i++;
 	}
-	for (int i = 0; i < 4; i++)
+	i = 0;
+	j = 0;
+	while (i < 4)
 	{
-		for (int j = 0; j < info->win_hei * info->win_wid; j++)
+		while (j < info->win_hei * info->win_wid)
 		{
 			info->texture[i][j] = 0;
+			j++;
 		}
+		i++;
 	}
 }

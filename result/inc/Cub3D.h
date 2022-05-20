@@ -6,7 +6,7 @@
 /*   By: yeju <yeju@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/01 15:28:46 by yeju              #+#    #+#             */
-/*   Updated: 2022/05/20 19:20:14 by yeju             ###   ########.fr       */
+/*   Updated: 2022/05/20 19:54:06 by yeju             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,98 +43,98 @@
 # define POSITIVE 1
 # define NEGATIVE -1
 
-typedef struct	s_img
+typedef struct s_img
 {
-	void	*img;
-	int		*data;
-	int		img_width;
-	int		img_height;
-	int		bits_per_pixel;
-	int		size_line;
-	int		endian;
-	char	*path;
+	void		*img;
+	int			*data;
+	int			img_width;
+	int			img_height;
+	int			bits_per_pixel;
+	int			size_line;
+	int			endian;
+	char		*path;
 }				t_img;
 
-typedef struct	s_map
+typedef struct s_map
 {
-	char	**world_map;
-	char	*line_map;
-	char	*map_name;
-	int		map_width;
-	int		map_height;
+	char		**world_map;
+	char		*line_map;
+	char		*map_name;
+	int			map_width;
+	int			map_height;
 }				t_map;
 
-typedef struct	s_key
+typedef struct s_key
 {
-	int	w;
-	int	a;
-	int	s;
-	int	d;
-	int	left;
-	int	right;
+	int			w;
+	int			a;
+	int			s;
+	int			d;
+	int			left;
+	int			right;
 }				t_key;
 
-typedef struct	s_pos
+typedef struct s_pos
 {
-	double	pos_x;
-	double	pos_y;
-	double	dir_x;
-	double	dir_y;
-	double	plane_x;
-	double	plane_y;
-	double	move_speed;
-	double	rot_speed;
+	double		pos_x;
+	double		pos_y;
+	double		dir_x;
+	double		dir_y;
+	double		plane_x;
+	double		plane_y;
+	double		move_speed;
+	double		rot_speed;
 }				t_pos;
 
-typedef struct	s_wall_data
+typedef struct s_wall_data
 {
-	double	camera_x;
-	double	raydir_x;
-	double	raydir_y;
-	int		map_pos_x;
-	int		map_pos_y;
-	double	side_dist_x;
-	double	side_dist_y;
-	int		step_x;
-	int		step_y;
-	double	d_dist_x;
-	double	d_dist_y;
-	int		side;
-	double	perp_wall_dist;
-	int		lineheight;
-	int		draw_start;
-	int		draw_end;
-	double	wallx;
-	int		tex_x;
-	double	step_val;
-	double	tex_pos;
-	int		hit;
+	double		camera_x;
+	double		raydir_x;
+	double		raydir_y;
+	int			map_pos_x;
+	int			map_pos_y;
+	double		side_dist_x;
+	double		side_dist_y;
+	int			step_x;
+	int			step_y;
+	double		d_dist_x;
+	double		d_dist_y;
+	int			side;
+	double		perp_wall_dist;
+	int			lineheight;
+	int			draw_start;
+	int			draw_end;
+	double		wallx;
+	int			tex_x;
+	double		step_val;
+	double		tex_pos;
+	int			hit;
 }				t_wall_data;
 
-typedef struct	s_path
+typedef struct s_path
 {
-	char	*path_n;
-	char	*path_s;
-	char	*path_w;
-	char	*path_e;
+	char		*path_n;
+	char		*path_s;
+	char		*path_w;
+	char		*path_e;
 }				t_path;
 
-typedef struct	s_info
+typedef struct s_info
 {
-	void	*mlx;
-	void	*win;
-	int		win_wid;
-	int		win_hei;
-	int		buf[640][480];
-	int		floor_color;
-	int		ceiling_color;
-	int		**texture;
-	int		flag;
-	t_pos	*pos;
-	t_key	*key;
-	t_img	*img;
-	t_path	*path;
-	t_map	*map;
+	void		*mlx;
+	void		*win;
+	int			win_wid;
+	int			win_hei;
+	int			buf[640][480];
+	int			floor_color;
+	int			ceiling_color;
+	int			**texture;
+	int			flag;
+	t_pos		*pos;
+	t_key		*key;
+	t_img		*img;
+	t_path		*path;
+	t_map		*map;
 }				t_info;
 
 void	init_dda_cast(t_wall_data *wall_data, t_info *info);
@@ -182,7 +182,9 @@ void	load_image(t_info *info, int *texture, char *path, t_img *img);
 void	load_texture(t_info *info);
 void	init_texture(t_info *info);
 
+void	print_exit(char *str);
 void	wall_cast(t_info *info, t_wall_data *wall_data, int count);
+int		raycasting_sub(t_info *info, t_wall_data *wall_data, int count);
 int		raycasting(t_info *info);
 void	hook_set(t_info *info);
 
@@ -208,8 +210,8 @@ int		rotate_left(t_info *info);
 int		rotate_right(t_info *info);
 int		key_update(t_info *info);
 
-void	print_exit(char *str);
 void	save_map_get_size(char *line_map, t_info *info);
+void	set_pos_2(char **world_map, t_info *info, int hei, int wid);
 void	set_pos(char **world_map, t_info *info);
 char	**save_map(char *line_map, t_info *info);
 
@@ -227,4 +229,4 @@ void	set_wall_data(t_wall_data *wall_data, t_info *info);
 void	set_texture_data(t_wall_data *wall_data, t_info *info);
 int		set_color(t_wall_data *wall_data, t_info *info);
 
-# endif
+#endif
