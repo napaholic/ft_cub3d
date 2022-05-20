@@ -1,7 +1,7 @@
 NAME = cub3d
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror #-g
-MFLAGS = -L ./mlx -lmlx -framework OpenGL -framework AppKit #-fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -g
+MFLAGS = -L ./mlx -lmlx -framework OpenGL -framework AppKit -fsanitize=address
 
 SRCS =	$(addprefix src/, Cub3D.c \
 					calculate_wall.c \
@@ -18,7 +18,6 @@ SRCS =	$(addprefix src/, Cub3D.c \
 					map_parse.c \
 					map_parse2.c \
 					map_parse3.c \
-					mov_cal.c \
 					movement.c \
 					movement2.c \
 					save_map.c \
