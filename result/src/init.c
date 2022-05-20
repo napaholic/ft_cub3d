@@ -6,7 +6,7 @@
 /*   By: yeju <yeju@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 13:17:02 by yeju              #+#    #+#             */
-/*   Updated: 2022/05/18 19:51:42 by yeju             ###   ########.fr       */
+/*   Updated: 2022/05/20 11:17:16 by yeju             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 int	init_map(t_info *info, char *map_name)
 {
-	if (!(info->map = (t_map *)malloc(sizeof(t_map))))
+	info->map = (t_map *)malloc(sizeof(t_map));
+	if (!info->map)
 		return (0);
 	utils_bzero(info->map, sizeof(t_map));
 	info->map->map_name = map_name;
@@ -25,7 +26,8 @@ int	init_map(t_info *info, char *map_name)
 
 int	init_key(t_info *info)
 {
-	if (!(info->key = (t_key *)malloc(sizeof(t_key))))
+	info->key = (t_key *)malloc(sizeof(t_key));
+	if (!info->key)
 		return (0);
 	utils_bzero(info->key, sizeof(t_key));
 	info->key->w = 0;
@@ -39,7 +41,8 @@ int	init_key(t_info *info)
 
 int	init_player(t_info *info)
 {
-	if (!(info->pos = (t_pos *)malloc(sizeof(t_pos))))
+	info->pos = (t_pos *)malloc(sizeof(t_pos));
+	if (!info->pos)
 		return (0);
 	utils_bzero(info->pos, sizeof(t_pos));
 	info->pos->pos_x = -20.0;
@@ -64,7 +67,8 @@ int	init_img(t_info *info, int win_wid, int win_hei)
 	img->img = mlx_new_image(info->mlx, win_wid, win_hei);
 	if (!img->img)
 		return (0);
-	img->data = (int *)mlx_get_data_addr(img->img, &img->bits_per_pixel, &img->size_line, &img->endian);
+	img->data = (int *)mlx_get_data_addr(img->img, &img->bits_per_pixel, \
+		&img->size_line, &img->endian);
 	img->img_width = win_wid;
 	img->img_height = win_hei;
 	info->img = img;
@@ -82,42 +86,12 @@ int	init_win_img(t_info *info)
 	info->map->world_map = save_map(map, info);
 	if (!info->map->world_map)
 		return (0);
-	info->win = mlx_new_window(info->mlx, info->win_wid, info->win_hei, "cub3D");
+	info->win = mlx_new_window(info->mlx, info->win_wid, \
+		info->win_hei, "cub3D");
 	if (!info->win)
 		return (0);
 	init_img_ret = init_img(info, info->win_wid, info->win_hei);
 	if (!init_img_ret)
 		return (0);
 	return (1);
-}
-
-int	init_path(t_info *info)
-{
-	if (!(info->path = (t_path *)malloc(sizeof(t_path))))
-		return (0);
-	utils_bzero(info->path, sizeof(t_path));
-	return (1);
-}
-
-int	init_info(t_info *info, char *argv)
-{
-	if (!init_map(info, argv) || !init_path(info) || \
-	!init_key(info) || !init_player(info) || !init_win_img(info))
-		return (0);
-	return (1);
-}
-
-t_info	*init_info_mlx(void)
-{
-	t_info	*info;
-
-	if (!(info = (t_info *)malloc(sizeof(t_info))))
-		exit(1);
-	utils_bzero(info, sizeof(t_info));
-	info->mlx = mlx_init();
-	if (!info->mlx)
-		return (0);
-	info->win_wid = 640;
-	info->win_hei = 480;
-	return (info);
 }
