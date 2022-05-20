@@ -6,7 +6,7 @@
 /*   By: yeju <yeju@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 18:07:07 by yeju              #+#    #+#             */
-/*   Updated: 2022/05/19 21:28:17 by yeju             ###   ########.fr       */
+/*   Updated: 2022/05/20 09:49:26 by yeju             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,6 @@ char	**save_map(char *line_map, t_info *info)
 	// for (int i = 0; i < info->map->map_height+1; i++)
 	// 	printf("%s\n", info->map->world_map[i]);
 	// printf("\n");
-	
 	set_pos(info->map->world_map, info);
 	if (info->pos->pos_x == -20.0 || info->pos->pos_y == -20.0)
 	{

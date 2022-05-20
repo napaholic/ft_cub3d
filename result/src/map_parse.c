@@ -6,7 +6,7 @@
 /*   By: yeju <yeju@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 18:16:26 by yeju              #+#    #+#             */
-/*   Updated: 2022/05/20 09:00:50 by yeju             ###   ########.fr       */
+/*   Updated: 2022/05/20 09:18:33 by yeju             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,7 +130,7 @@ int	utils_check_color(char *line, int c, int idx)
 		i = idx + 1;
 	while (utils_white_space(line[i]))
 		i++;
-	while (utils_isdigit(line[i]) || line[i] == ',')
+	while (utils_isdigit(line[i]) || line[i] == ',' || line[i] == '+')
 		i++;
 	while (utils_white_space(line[i]))
 		i++;
@@ -148,23 +148,31 @@ int	get_rgb_value(char *line)
 	int	b;
 
 	rgb = 0;
-	r = 0;
-	g = 0;
-	b = 0;
 	line++;
 	while (utils_white_space(*line))
 		line++;
 	split_rgb = utils_split(line, ',');
-	if (!r || !g || !b)
-		return (0);
+	if (!split_rgb[0] || !split_rgb[1] || !split_rgb[2])
+	{
+		printf("Error\n empty color\n");
+		exit(1);
+	}
 	r = utils_atoi(split_rgb[0]);
 	g = utils_atoi(split_rgb[1]);
 	b = utils_atoi(split_rgb[2]);
-	rgb = r;
-	rgb = (rgb << 8) + g;
-	rgb = (rgb << 8) + b;
-	utils_free_split(split_rgb);
-	return (rgb);
+	if (0 <= r && r <= 255 && 0 <= g && g <= 255 && 0 <= b && b <= 255)
+	{
+		rgb = r;
+		rgb = (rgb << 8) + g;
+		rgb = (rgb << 8) + b;
+		utils_free_split(split_rgb);
+		return (rgb);
+	}
+	else
+	{
+		printf("Error\n wrong color\n");
+		exit(1);
+	}
 }
 
 int	read_color(char *line, int c, int idx, t_info *info)

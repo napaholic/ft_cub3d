@@ -6,7 +6,7 @@
 /*   By: yeju <yeju@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 13:12:58 by yeju              #+#    #+#             */
-/*   Updated: 2022/05/18 18:46:58 by yeju             ###   ########.fr       */
+/*   Updated: 2022/05/20 09:10:44 by yeju             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,8 @@ int	utils_atoi(const char *str)
 	i = 0;
 	minus = 1;
 	num = 0;
+	if (!str)
+		return (0);
 	while ((str[i] != '\0') && utils_white_space(str[i]) == 1)
 		i++;
 	if (str[i] == '-' || str[i] == '+')
