@@ -6,7 +6,7 @@
 /*   By: yeju <yeju@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 11:20:24 by yeju              #+#    #+#             */
-/*   Updated: 2022/05/20 11:20:25 by yeju             ###   ########.fr       */
+/*   Updated: 2022/05/20 11:41:24 by yeju             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	map_check(char *line, char **map, int idx, int gnl_ret)
 		*map = utils_strjoin(*map, line);
 		if (gnl_ret != 0 && line[idx])
 			*map = utils_strjoin(*map, "\n");
-		// free(line);
+		free(line);
 		return (1);
 	}
 	return (0);

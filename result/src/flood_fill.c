@@ -6,7 +6,7 @@
 /*   By: yeju <yeju@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 21:30:12 by yeju              #+#    #+#             */
-/*   Updated: 2022/05/20 11:13:59 by yeju             ###   ########.fr       */
+/*   Updated: 2022/05/20 11:34:34 by yeju             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,15 +60,13 @@ int	is_save(int x, int y, t_info *info)
 
 int	flood_fill(int pox, int poy, t_info *info)
 {
-	int	dx[8];
-	int	dy[8];
+	int	dx[8] = {1, 0, -1, 0, 1, -1, 1, -1};
+	int	dy[8] = {0, 1, 0, -1, 1, -1, -1, 1};
 	int	idx;
 	int	nx;
 	int	ny;
 
 	idx = 0;
-	dx[8] = {1, 0, -1, 0, 1, -1, 1, -1};
-	dy[8] = {0, 1, 0, -1, 1, -1, -1, 1};
 	info->map->world_map[poy][pox] = '2';
 	while (idx < 8)
 	{

@@ -4,24 +4,27 @@ CFLAGS = -Wall -Wextra -Werror #-g
 MFLAGS = -L ./mlx -lmlx -framework OpenGL -framework AppKit #-fsanitize=address
 
 SRCS =	$(addprefix src/, Cub3D.c \
-					get_next_line.c \
+					calculate_wall.c \
+					draw_floor.c \
+					flood_fill.c \
+					get_direction.c \
 					get_next_line_utils.c \
+					get_next_line.c \
+					hook_func.c \
+					init.c \
+					init2.c \
+					load_texture.c \
+					loop_hook.c \
 					map_parse.c \
+					map_parse2.c \
+					map_parse3.c \
+					mov_cal.c \
 					movement.c \
 					movement2.c \
-					init.c \
-					loop_hook.c \
-					calculate_wall.c \
-					wall_cast.c \
-					draw_floor.c \
-					load_texture.c \
 					save_map.c \
-					hook_func.c \
-					get_direction.c \
-					flood_fill.c \
 					utils.c	\
-					mov_cal.c \
-					utils2.c)
+					utils2.c \
+					wall_cast.c)
 
 OBJS = $(SRCS:.c=.o)
 

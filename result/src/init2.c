@@ -6,7 +6,7 @@
 /*   By: yeju <yeju@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 11:17:22 by yeju              #+#    #+#             */
-/*   Updated: 2022/05/20 11:17:39 by yeju             ###   ########.fr       */
+/*   Updated: 2022/05/20 11:35:23 by yeju             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 int	init_path(t_info *info)
 {
-	if (!(info->path = (t_path *)malloc(sizeof(t_path))))
+	info->path = (t_path *)malloc(sizeof(t_path));
+	if (!info->path)
 		return (0);
 	utils_bzero(info->path, sizeof(t_path));
 	return (1);

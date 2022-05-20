@@ -6,7 +6,7 @@
 /*   By: yeju <yeju@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 13:12:58 by yeju              #+#    #+#             */
-/*   Updated: 2022/05/20 11:20:54 by yeju             ###   ########.fr       */
+/*   Updated: 2022/05/20 11:33:23 by yeju             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,5 @@ int	key_update(t_info *info)
 		return (rotate_right(info));
 	if (info->key->right == 1)
 		return (rotate_left(info));
-	if (info->key->e == 1)
-		return (rotate_mouse(info));
 	return (0);
 }

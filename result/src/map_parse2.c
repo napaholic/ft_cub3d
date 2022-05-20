@@ -6,7 +6,7 @@
 /*   By: yeju <yeju@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 11:18:47 by yeju              #+#    #+#             */
-/*   Updated: 2022/05/20 11:20:10 by yeju             ###   ########.fr       */
+/*   Updated: 2022/05/20 11:38:57 by yeju             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,11 +64,11 @@ int	utils_check_color(char *line, int c, int idx)
 
 int	get_rgb_value(char *line)
 {
-	int	rgb;
-	char **split_rgb;
-	int	r;
-	int	g;
-	int	b;
+	int		rgb;
+	char	**split_rgb;
+	int		r;
+	int		g;
+	int		b;
 
 	rgb = 0;
 	line++;
