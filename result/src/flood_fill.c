@@ -6,7 +6,7 @@
 /*   By: yeju <yeju@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 21:30:12 by yeju              #+#    #+#             */
-/*   Updated: 2022/05/20 20:47:44 by yeju             ###   ########.fr       */
+/*   Updated: 2022/05/20 21:00:21 by yeju             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,27 +67,6 @@ int	is_save(int x, int y, t_info *info)
 {
 	return (0 <= x && x < info->map->map_width + 1 && \
 		0 <= y && y < info->map->map_height + 1);
-}
-
-void	set_arr(int *dx, int *dy)
-{
-	dx[0] = 1;
-	dx[1] = 0;
-	dx[2] = -1;
-	dx[3] = 0;
-	dx[4] = 1;
-	dx[5] = -1;
-	dx[6] = 1;
-	dx[7] = -1;
-	dy[0] = 0;
-	dy[1] = 1;
-	dy[2] = 0;
-	dy[3] = -1;
-	dy[4] = 1;
-	dy[5] = -1;
-	dy[6] = -1;
-	dy[7] = 1;
-	return ;
 }
 
 int	flood_fill(int pox, int poy, t_info *info)

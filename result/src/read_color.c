@@ -6,7 +6,7 @@
 /*   By: yeju <yeju@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 20:14:58 by yeju              #+#    #+#             */
-/*   Updated: 2022/05/20 20:15:04 by yeju             ###   ########.fr       */
+/*   Updated: 2022/05/20 20:59:58 by yeju             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	get_rgb_value(char *line)
 	int		rgb;
 	char	**split_rgb;
 	int		idx[3];
-	
+
 	rgb = 0;
 	line++;
 	while (utils_white_space(*line))

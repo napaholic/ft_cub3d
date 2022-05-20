@@ -6,7 +6,7 @@
 /*   By: yeju <yeju@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 11:17:45 by yeju              #+#    #+#             */
-/*   Updated: 2022/05/20 19:40:31 by yeju             ###   ########.fr       */
+/*   Updated: 2022/05/20 20:59:15 by yeju             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	load_image(t_info *info, int *texture, char *path, t_img *img)
 {
 	int	x;
 	int	y;
-	
+
 	x = 0;
 	y = 0;
 	img->img = mlx_xpm_file_to_image(info->mlx, path, &img->img_width, \

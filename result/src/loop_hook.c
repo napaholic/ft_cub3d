@@ -6,13 +6,13 @@
 /*   By: yeju <yeju@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 13:31:53 by yeju              #+#    #+#             */
-/*   Updated: 2022/05/20 19:53:55 by yeju             ###   ########.fr       */
+/*   Updated: 2022/05/20 20:59:41 by yeju             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/Cub3D.h"
 
-int 	print_exit(char *str)
+int	print_exit(char *str)
 {
 	printf("%s", str);
 	exit(1);
@@ -31,7 +31,7 @@ void	wall_cast(t_info *info, t_wall_data *wall_data, int count)
 
 int	raycasting_sub(t_info *info, t_wall_data *wall_data, int count)
 {
-	int			y;
+	int	y;
 
 	while (++count < info->win_wid)
 	{
