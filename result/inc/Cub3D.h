@@ -6,7 +6,7 @@
 /*   By: yeju <yeju@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/01 15:28:46 by yeju              #+#    #+#             */
-/*   Updated: 2022/05/20 11:33:35 by yeju             ###   ########.fr       */
+/*   Updated: 2022/05/20 13:37:17 by yeju             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,6 +144,7 @@ typedef struct	s_info
 	int		floor_color;
 	int		ceiling_color;
 	int		**texture;
+	int		flag;
 	t_pos	*pos;
 	t_key	*key;
 	t_img	*img;
@@ -214,7 +215,7 @@ int		utils_check_color(char *line, int c, int idx);
 int		get_rgb_value(char *line);
 int		read_color(char *line, int c, int idx, t_info *info);
 int		read_map_setting(char *line, int idx, t_info *info);
-int		map_check(char *line, char **map, int idx, int gnl_ret);
+int	map_check(char *line, char **map, int idx, int gnl_ret, t_info *info);
 int		read_map_sub(char *line, char **map, t_info *info, int gnl_ret);
 char	*read_map(char *argv, t_info *info);
 

@@ -6,7 +6,7 @@
 /*   By: yeju <yeju@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 11:18:47 by yeju              #+#    #+#             */
-/*   Updated: 2022/05/20 11:38:57 by yeju             ###   ########.fr       */
+/*   Updated: 2022/05/20 13:15:34 by yeju             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,13 +136,15 @@ int	read_map_setting(char *line, int idx, t_info *info)
 		return (2);
 	if (first == 'N' || first == 'W' || first == 'E' || first == 'S')
 	{
-		if (read_txt_path(line, first, second, idx, info) == 0)
+		if (!read_txt_path(line, first, second, idx, info))
 		{
 			printf("invalid map file format");
 			exit(1);
 		}
-		if (first == 'F' || first == 'C')
-			read_color(line, line[idx], idx, info);
+	}
+	if (first == 'F' || first == 'C')
+	{
+		read_color(line, line[idx], idx, info);
 	}
 	return (1);
 }

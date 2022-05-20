@@ -6,17 +6,11 @@
 /*   By: yeju <yeju@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 12:51:55 by yeju              #+#    #+#             */
-/*   Updated: 2022/05/20 11:03:59 by yeju             ###   ########.fr       */
+/*   Updated: 2022/05/20 11:43:31 by yeju             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/Cub3D.h"
-
-void	check_leaks()
-{
-	system("leaks Cub3D");
-	return ;
-}
 
 int	main(int argc, char **argv)
 {
@@ -37,6 +31,5 @@ int	main(int argc, char **argv)
 	}
 	load_texture(info);
 	hook_set(info);
-	atexit(check_leaks);
 	return (0);
 }
