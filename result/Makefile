@@ -1,7 +1,7 @@
 NAME = cub3d
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -g
-MFLAGS = -L ./mlx -lmlx -framework OpenGL -framework AppKit -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror #-g
+MFLAGS = -L ./mlx -lmlx -framework OpenGL -framework AppKit #-fsanitize=address
 
 SRCS =	$(addprefix src/, Cub3D.c \
 					get_next_line.c \
@@ -22,9 +22,6 @@ SRCS =	$(addprefix src/, Cub3D.c \
 					utils.c	\
 					mov_cal.c \
 					utils2.c)
-					# engine_run.c \
-					# texture_set.c \
-					# draw_floor.c \
 
 OBJS = $(SRCS:.c=.o)
 

@@ -6,7 +6,7 @@
 /*   By: yeju <yeju@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/01 15:28:46 by yeju              #+#    #+#             */
-/*   Updated: 2022/05/18 18:39:34 by yeju             ###   ########.fr       */
+/*   Updated: 2022/05/20 11:11:04 by yeju             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,7 +167,7 @@ void	check_leaks();
 
 /* calc_wall */
 void	floor_cast(t_info *info);
-void	init_DDA_cast(t_wall_data *wall_data, t_info *info);
+void	init_dda_cast(t_wall_data *wall_data, t_info *info);
 void	calc_perp_dist(t_wall_data *wall_data, t_info *info);
 void	set_dda(t_wall_data *wall_data, t_info *info, int cur_x);
 void	wall_cast(t_info *info, t_wall_data *wall_data, int count);

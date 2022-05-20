@@ -6,7 +6,7 @@
 /*   By: yeju <yeju@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 15:19:45 by yeju              #+#    #+#             */
-/*   Updated: 2022/05/19 21:27:34 by yeju             ###   ########.fr       */
+/*   Updated: 2022/05/20 11:14:11 by yeju             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ void	set_south(t_info *info, int hei, int wid)
 	info->pos->plane_x = -0.66;
 	info->pos->plane_y = 0.0;
 	info->map->world_map[hei][wid] = '0';
-	//worldmap이후에설정하는지확인
 }
 
 void	get_direction(t_info *info, char **world_map, int hei, int wid)

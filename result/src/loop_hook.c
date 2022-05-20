@@ -6,7 +6,7 @@
 /*   By: yeju <yeju@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 13:31:53 by yeju              #+#    #+#             */
-/*   Updated: 2022/05/18 18:44:27 by yeju             ###   ########.fr       */
+/*   Updated: 2022/05/20 11:11:04 by yeju             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	wall_cast(t_info *info, t_wall_data *wall_data, int count)
 {
 	set_dda(wall_data, info, count);
-	init_DDA_cast(wall_data, info);
+	init_dda_cast(wall_data, info);
 	step_progress_until_hit(wall_data, info);
 	calc_perp_dist(wall_data, info);
 	set_wall_data(wall_data, info);
