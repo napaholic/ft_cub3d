@@ -6,7 +6,7 @@
 /*   By: yeju <yeju@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 11:20:24 by yeju              #+#    #+#             */
-/*   Updated: 2022/05/20 21:19:21 by yeju             ###   ########.fr       */
+/*   Updated: 2022/05/20 21:20:49 by yeju             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,17 @@ int	read_map_sub(char *line, char **map, t_info *info)
 	return (1);
 }
 
+int	check_fd(int fd)
+{
+	if (fd < 0)
+	{
+		printf("%s", "ERROR\n cannot open file\n");
+		exit(1);
+		return (0);
+	}
+	return (1);
+}
+
 char	*read_map(char *argv, t_info *info)
 {
 	int		fd;
@@ -60,12 +71,8 @@ char	*read_map(char *argv, t_info *info)
 	char	*line;
 
 	fd = open(argv, O_RDONLY);
-	if (fd < 0)
-	{
-		printf("%s", "ERROR\n cannot open file\n");
-		exit(1);
+	if (!check_fd(fd))
 		return (0);
-	}
 	map = (char *)malloc(sizeof(char) * 2);
 	utils_bzero(map, sizeof(char));
 	line = (char *)malloc(sizeof(char) * 1);
