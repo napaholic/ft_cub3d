@@ -18,18 +18,6 @@ void	print_exit(char *str)
 	exit(1);
 }
 
-void	exit_process(int err_num)
-{
-	if (err_num == MULTI_PLAYER)
-		print_exit("Error\n there is multi player\n");
-	if (err_num == EMPTY_MAP)
-		print_exit("Error\n empty map");
-	if (err_num == POS_SET_ERR)
-		print_exit("Error\n incorrect map");
-	if (err_num == INVAILD_MAP)
-		print_exit("Error\n pos setting");
-}
-
 void	save_map_get_size(char *line_map, t_info *info)
 {
 	size_t	i;
@@ -99,7 +87,7 @@ void	set_pos(char **world_map, t_info *info)
 		hei++;
 	}
 	if (flag != 1)
-		exit_process(MULTI_PLAYER);
+		print_exit("Error\n there is multi player\n");
 }
 
 char	**save_map(char *line_map, t_info *info)
@@ -122,12 +110,12 @@ char	**save_map(char *line_map, t_info *info)
 	}
 	info->map->world_map = utils_split(line_map, '\n');
 	if (!*info->map->world_map)
-		exit_process(EMPTY_MAP);
+		print_exit("Error\n empty map");
 	set_pos(info->map->world_map, info);
 	if (info->pos->pos_x == -20.0 || info->pos->pos_y == -20.0)
-		exit_process(POS_SET_ERR);
+		print_exit("Error\n incorrect map");
 	if (!flood_fill((int)info->pos->pos_x, (int)info->pos->pos_y, info))
-		exit_process(INVAILD_MAP);
+		print_exit("Error\n pos setting");
 	free(line_map);
 	return (info->map->world_map);
 }
