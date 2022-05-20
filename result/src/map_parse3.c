@@ -6,14 +6,23 @@
 /*   By: yeju <yeju@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 11:20:24 by yeju              #+#    #+#             */
-/*   Updated: 2022/05/20 11:41:24 by yeju             ###   ########.fr       */
+/*   Updated: 2022/05/20 13:39:15 by yeju             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/Cub3D.h"
 
-int	map_check(char *line, char **map, int idx, int gnl_ret)
+int	map_check(char *line, char **map, int idx, int gnl_ret, t_info *info)
 {
+	// printf("line: %c\n", line[idx]);
+	if (line[idx] == '1')
+		info->flag = 1;
+	// printf("flag: %d\n", info->flag);
+	if (!utils_strlen(line) && info->flag)
+	{
+		printf("Error\n empty line in map");
+		exit(1);
+	}
 	if (utils_white_space(line[idx]) || line[idx] == '1' || line[idx] == '0')
 	{
 		*map = utils_strjoin(*map, line);
@@ -41,7 +50,7 @@ int	read_map_sub(char *line, char **map, t_info *info, int gnl_ret)
 	}
 	else
 	{
-		map_check(line, map, idx, gnl_ret);
+		map_check(line, map, idx, gnl_ret, info);
 	}
 	return (1);
 }
