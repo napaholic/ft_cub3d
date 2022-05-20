@@ -6,7 +6,7 @@
 /*   By: yeju <yeju@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 10:21:07 by yeju              #+#    #+#             */
-/*   Updated: 2022/05/18 18:46:17 by yeju             ###   ########.fr       */
+/*   Updated: 2022/05/20 19:19:44 by yeju             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@ int	key_press(int key, t_info *info)
 		info->key->left = 1;
 	else if (key == KEY_RIGHT && info->key->right == 0)
 		info->key->right = 1;
-	else if (key == KEY_E)
-		info->key->e ^= 1;
 	return (1);
 }
 

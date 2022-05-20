@@ -5,7 +5,6 @@ MFLAGS = -L ./mlx -lmlx -framework OpenGL -framework AppKit -fsanitize=address
 
 SRCS =	$(addprefix src/, Cub3D.c \
 					calculate_wall.c \
-					draw_floor.c \
 					flood_fill.c \
 					get_direction.c \
 					get_next_line_utils.c \

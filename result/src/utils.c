@@ -6,13 +6,13 @@
 /*   By: yeju <yeju@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 13:12:58 by yeju              #+#    #+#             */
-/*   Updated: 2022/05/20 09:10:44 by yeju             ###   ########.fr       */
+/*   Updated: 2022/05/20 19:16:37 by yeju             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/Cub3D.h"
 
-static int	utils_count_words(const char *str, char c)
+int	utils_count_words(const char *str, char c)
 {
 	int	i;
 	int	trigger;
@@ -33,7 +33,7 @@ static int	utils_count_words(const char *str, char c)
 	return (i);
 }
 
-static char	*utils_word_dup(const char *str, int start, int finish)
+char	*utils_word_dup(const char *str, int start, int finish)
 {
 	char	*word;
 	int		i;

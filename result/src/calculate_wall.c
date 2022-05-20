@@ -6,7 +6,7 @@
 /*   By: yeju <yeju@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 11:11:07 by yeju              #+#    #+#             */
-/*   Updated: 2022/05/20 11:11:08 by yeju             ###   ########.fr       */
+/*   Updated: 2022/05/20 19:09:55 by yeju             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,4 +85,19 @@ void	step_progress_until_hit(t_wall_data *wall_data, t_info *info)
 		[wall_data->map_pos_x] == '1')
 			wall_data->hit = 1;
 	}
+}
+
+void	draw(t_info *info)
+{
+	int	y;
+	int	x;
+
+	y = -1;
+	while (++y < info->win_hei)
+	{
+		x = -1;
+		while (++x < info->win_wid)
+			info->img->data[y * info->win_wid + x] = info->buf[x][y];
+	}
+	mlx_put_image_to_window(info->mlx, info->win, info->img->img, 0, 0);
 }
