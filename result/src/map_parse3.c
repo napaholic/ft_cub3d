@@ -6,7 +6,7 @@
 /*   By: yeju <yeju@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 11:20:24 by yeju              #+#    #+#             */
-/*   Updated: 2022/05/20 13:39:15 by yeju             ###   ########.fr       */
+/*   Updated: 2022/05/20 15:29:15 by yeju             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,8 @@
 
 int	map_check(char *line, char **map, int idx, int gnl_ret, t_info *info)
 {
-	// printf("line: %c\n", line[idx]);
 	if (line[idx] == '1')
 		info->flag = 1;
-	// printf("flag: %d\n", info->flag);
 	if (!utils_strlen(line) && info->flag)
 	{
 		printf("Error\n empty line in map");

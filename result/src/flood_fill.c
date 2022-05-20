@@ -6,7 +6,7 @@
 /*   By: yeju <yeju@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 21:30:12 by yeju              #+#    #+#             */
-/*   Updated: 2022/05/20 11:34:34 by yeju             ###   ########.fr       */
+/*   Updated: 2022/05/20 16:10:35 by yeju             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,16 @@ int	check_fill(t_info *info)
 		{
 			if (info->map->world_map[y][x] == '\0')
 			{
-				y++;
+				if (y == info->map->map_height - 1)
+					break;
+				else
+					y++;
+				x = 0;
 			}
-			if (utils_white_space(info->map->world_map[y][x]))
+			while (utils_white_space(info->map->world_map[y][x]))
 				x++;
-			if (!utils_white_space(info->map->world_map[y][x]) && \
-				!(info->map->world_map[y][x] == '1' || \
-				info->map->world_map[y][x] == '2'))
+			printf("%d, %d\n", y, x);
+			if (!(utils_white_space(info->map->world_map[y][x]) || info->map->world_map[y][x] == '1' || info->map->world_map[y][x] == '2'))
 			{
 				return (0);
 			}
