@@ -6,13 +6,13 @@
 /*   By: yeju <yeju@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 11:20:24 by yeju              #+#    #+#             */
-/*   Updated: 2022/05/20 15:29:15 by yeju             ###   ########.fr       */
+/*   Updated: 2022/05/20 20:56:40 by yeju             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/Cub3D.h"
 
-int	map_check(char *line, char **map, int idx, int gnl_ret, t_info *info)
+int	map_check(char *line, char **map, int idx, t_info *info)
 {
 	if (line[idx] == '1')
 		info->flag = 1;
@@ -24,7 +24,7 @@ int	map_check(char *line, char **map, int idx, int gnl_ret, t_info *info)
 	if (utils_white_space(line[idx]) || line[idx] == '1' || line[idx] == '0')
 	{
 		*map = utils_strjoin(*map, line);
-		if (gnl_ret != 0 && line[idx])
+		if (info->word->gnl_ret != 0 && line[idx])
 			*map = utils_strjoin(*map, "\n");
 		free(line);
 		return (1);
@@ -32,7 +32,7 @@ int	map_check(char *line, char **map, int idx, int gnl_ret, t_info *info)
 	return (0);
 }
 
-int	read_map_sub(char *line, char **map, t_info *info, int gnl_ret)
+int	read_map_sub(char *line, char **map, t_info *info)
 {
 	int	idx;
 	int	ret;
@@ -48,7 +48,7 @@ int	read_map_sub(char *line, char **map, t_info *info, int gnl_ret)
 	}
 	else
 	{
-		map_check(line, map, idx, gnl_ret, info);
+		map_check(line, map, idx, info);
 	}
 	return (1);
 }
@@ -56,7 +56,6 @@ int	read_map_sub(char *line, char **map, t_info *info, int gnl_ret)
 char	*read_map(char *argv, t_info *info)
 {
 	int		fd;
-	int		ret;
 	char	*map;
 	char	*line;
 
@@ -71,12 +70,12 @@ char	*read_map(char *argv, t_info *info)
 	utils_bzero(map, sizeof(char));
 	line = (char *)malloc(sizeof(char) * 1);
 	utils_bzero(line, sizeof(char));
-	while ((ret = get_next_line(fd, &line)) != -1)
+	while ((info->word->gnl_ret = get_next_line(fd, &line)) != -1)
 	{
-		if (line && !read_map_sub(line, &map, info, ret))
+		if (line && !read_map_sub(line, &map, info))
 			return (0);
 		line = NULL;
-		if (ret == 0)
+		if (info->word->gnl_ret == 0)
 			break ;
 	}
 	free(line);
