@@ -6,7 +6,7 @@
 /*   By: yeju <yeju@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 18:16:26 by yeju              #+#    #+#             */
-/*   Updated: 2022/05/19 21:27:59 by yeju             ###   ########.fr       */
+/*   Updated: 2022/05/20 09:00:50 by yeju             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,14 +148,18 @@ int	get_rgb_value(char *line)
 	int	b;
 
 	rgb = 0;
+	r = 0;
+	g = 0;
+	b = 0;
 	line++;
 	while (utils_white_space(*line))
 		line++;
 	split_rgb = utils_split(line, ',');
+	if (!r || !g || !b)
+		return (0);
 	r = utils_atoi(split_rgb[0]);
 	g = utils_atoi(split_rgb[1]);
 	b = utils_atoi(split_rgb[2]);
-
 	rgb = r;
 	rgb = (rgb << 8) + g;
 	rgb = (rgb << 8) + b;
@@ -175,6 +179,11 @@ int	read_color(char *line, int c, int idx, t_info *info)
 		exit(1);
 	}
 	rgb = get_rgb_value(line);
+	if (!rgb)
+	{
+		printf("Error\n incorrect color\n");
+		exit(1);
+	}
 	if (c == 'F')
 		info->floor_color = rgb;
 	if (c == 'C')
