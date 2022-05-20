@@ -6,7 +6,7 @@
 /*   By: yeju <yeju@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/01 15:28:46 by yeju              #+#    #+#             */
-/*   Updated: 2022/05/20 21:19:26 by yeju             ###   ########.fr       */
+/*   Updated: 2022/05/20 21:27:18 by yeju             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,7 +143,7 @@ typedef struct s_info
 	t_path		*path;
 	t_map		*map;
 	t_word		*word;
-	}				t_info;
+}				t_info;
 
 void	init_dda_cast(t_wall_data *wall_data, t_info *info);
 void	set_dda(t_wall_data *wall_data, t_info *info, int count);
