@@ -6,7 +6,7 @@
 /*   By: yeju <yeju@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 21:30:12 by yeju              #+#    #+#             */
-/*   Updated: 2022/05/20 10:39:03 by yeju             ###   ########.fr       */
+/*   Updated: 2022/05/20 10:45:36 by yeju             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,10 @@ int	check_fill(t_info *info)
 	int	y;
 	int	x;
 
+	//test code
+	// for (int i = 0; i < info->map->map_height+1; i++)
+	// 	printf("%s\n", info->map->world_map[i]);
+	// printf("\n");
 	y = 0;
 	while (y < info->map->map_height)
 	{
@@ -73,10 +77,6 @@ int	flood_fill(int pox, int poy, t_info *info)
 	
 	idx = 0;
 	info->map->world_map[poy][pox] = '2';
-	//test code
-	// for (int i = 0; i < info->map->map_height+1; i++)
-	// 	printf("%s\n", info->map->world_map[i]);
-	// printf("\n");
 	while (idx < 8)
 	{
 		nx = pox + dx[idx];
