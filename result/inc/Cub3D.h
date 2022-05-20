@@ -190,7 +190,7 @@ void	load_image(t_info *info, int *texture, char *path, t_img *img);
 void	load_texture(t_info *info);
 void	init_texture(t_info *info);
 
-void	print_exit(char *str);
+int		print_exit(char *str);
 void	wall_cast(t_info *info, t_wall_data *wall_data, int count);
 int		raycasting_sub(t_info *info, t_wall_data *wall_data, int count);
 int		raycasting(t_info *info);

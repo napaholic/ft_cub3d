@@ -36,36 +36,29 @@ int	get_rgb_value(char *line)
 {
 	int		rgb;
 	char	**split_rgb;
-	int		r;
-	int		g;
-	int		b;
-
+	int		idx[3];
+	
 	rgb = 0;
 	line++;
 	while (utils_white_space(*line))
 		line++;
 	split_rgb = utils_split(line, ',');
 	if (!split_rgb[0] || !split_rgb[1] || !split_rgb[2])
+		print_exit("Error\n empty color\n");
+	idx[0] = utils_atoi(split_rgb[0]);
+	idx[1] = utils_atoi(split_rgb[1]);
+	idx[2] = utils_atoi(split_rgb[2]);
+	if (0 <= idx[0] && idx[0] <= 255 && 0 <= idx[1] && idx[1] <= 255
+		&& 0 <= idx[2] && idx[2] <= 255)
 	{
-		printf("Error\n empty color\n");
-		exit(1);
-	}
-	r = utils_atoi(split_rgb[0]);
-	g = utils_atoi(split_rgb[1]);
-	b = utils_atoi(split_rgb[2]);
-	if (0 <= r && r <= 255 && 0 <= g && g <= 255 && 0 <= b && b <= 255)
-	{
-		rgb = r;
-		rgb = (rgb << 8) + g;
-		rgb = (rgb << 8) + b;
+		rgb = idx[0];
+		rgb = (rgb << 8) + idx[1];
+		rgb = (rgb << 8) + idx[2];
 		utils_free_split(split_rgb);
 		return (rgb);
 	}
 	else
-	{
-		printf("Error\n wrong color\n");
-		exit(1);
-	}
+		return (print_exit("Error\n wrong color\n"));
 }
 
 int	read_color(char *line, int c, int idx, t_info *info)
