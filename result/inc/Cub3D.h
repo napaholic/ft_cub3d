@@ -50,6 +50,12 @@
 # define POSITIVE 1
 # define NEGATIVE -1
 
+/* err_num */
+# define MULTI_PLAYER	0
+# define EMPTY_MAP		1
+# define POS_SET_ERR	2
+# define INVAILD_MAP	3
+
 /* image struct */
 typedef struct	s_img
 {
@@ -268,6 +274,8 @@ void	hook_set(t_info *info);
 
 /* save_map.c */
 char	**save_map(char *line_map, t_info *info);
+void    exit_process(int err_num);
+void    print_exit(char *str);
 
 /* flood_fill.c */
 int	check_fill(t_info *info);
