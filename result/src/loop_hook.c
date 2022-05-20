@@ -12,7 +12,7 @@
 
 #include "../inc/Cub3D.h"
 
-void	print_exit(char *str)
+int 	print_exit(char *str)
 {
 	printf("%s", str);
 	exit(1);
