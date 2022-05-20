@@ -14,16 +14,24 @@
 
 void	load_image(t_info *info, int *texture, char *path, t_img *img)
 {
+	int	x;
+	int	y;
+	
+	x = 0;
+	y = 0;
 	img->img = mlx_xpm_file_to_image(info->mlx, path, &img->img_width, \
 		&img->img_height);
 	img->data = (int *)mlx_get_data_addr(img->img, &img->bits_per_pixel, \
 		&img->size_line, &img->endian);
-	for (int y = 0; y < img->img_height; y++)
+	while (y < img->img_height)
 	{
-		for (int x = 0; x < img->img_width; x++)
+		x = 0;
+		while (x < img->img_width)
 		{
 			texture[img->img_width * y + x] = img->data[img->img_width * y + x];
+			x += 1;
 		}
+		y++;
 	}
 	mlx_destroy_image(info->mlx, img->img);
 }
