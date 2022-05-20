@@ -6,7 +6,7 @@
 /*   By: yeju <yeju@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 21:30:12 by yeju              #+#    #+#             */
-/*   Updated: 2022/05/20 10:24:25 by yeju             ###   ########.fr       */
+/*   Updated: 2022/05/20 10:39:03 by yeju             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,11 @@ int	check_fill(t_info *info)
 
 int	check_player_in_wall(int nx, int ny, t_info *info)
 {
-	if (nx < 0 || nx > info->map->map_width - 1 || ny < 0 || ny > info->map->map_height - 1)
+	if (nx < 0 || nx > info->map->map_width - 1 || ny < 0 || ny > info->map->map_height)
+	{
+		printf("nx, ny: %d, %d\n", nx, ny);
 		return (0);
+	}
 	return (1);
 }
 
