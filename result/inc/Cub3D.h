@@ -6,7 +6,7 @@
 /*   By: yeju <yeju@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/01 15:28:46 by yeju              #+#    #+#             */
-/*   Updated: 2022/05/20 20:23:05 by yeju             ###   ########.fr       */
+/*   Updated: 2022/05/20 20:39:59 by yeju             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,6 +155,7 @@ int		check_fill_2(t_info *info, int x, int y);
 int		check_player_in_wall(int nx, int ny, t_info *info);
 int		is_save(int x, int y, t_info *info);
 int		flood_fill(int pox, int poy, t_info *info);
+void	set_arr(int *dx, int *dy);
 
 void	get_direction(t_info *info, char **world_map, int hei, int wid);
 void	set_south(t_info *info, int hei, int wid);
