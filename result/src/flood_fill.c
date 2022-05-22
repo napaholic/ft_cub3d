@@ -6,57 +6,63 @@
 /*   By: yeju <yeju@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 21:30:12 by yeju              #+#    #+#             */
-/*   Updated: 2022/05/20 21:46:52 by yeju             ###   ########.fr       */
+/*   Updated: 2022/05/22 13:18:30 by yeju             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/Cub3D.h"
 
-int	check_fill_2(t_info *info, int x, int y)
+int	check_fill_2(t_info *info)
 {
-	if (info->map->world_map[y][x] == '\0')
+	while (utils_white_space(info->map->world_map[info->word->cur_y][info->word->cur_x]))
+		info->word->cur_x++;
+	if (info->map->world_map[info->word->cur_y][info->word->cur_x] == '\0')
 	{
-		if (y == info->map->map_height - 1)
-			return (0);
+		if (info->word->cur_y != info->map->map_height)
+		{
+			info->word->cur_y++;
+			info->word->cur_x = 0;
+		}
 		else
-			y++;
-		x = 0;
+		{
+			return (1);
+		}
 	}
-	while (utils_white_space(info->map->world_map[y][x]))
-		x++;
-	if (!(utils_white_space(info->map->world_map[y][x]) || \
-		info->map->world_map[y][x] == '1' || \
-		info->map->world_map[y][x] == '2'))
+	// printf("y, x: %d, %d\n", info->word->cur_y, info->word->cur_x);
+	if (utils_white_space(info->map->world_map[info->word->cur_y][info->word->cur_x]) || \
+		info->map->world_map[info->word->cur_y][info->word->cur_x] == '1' || \
+		info->map->world_map[info->word->cur_y][info->word->cur_x] == '2')
 	{
-		// for (int i = 0; i < info->map->map_width; i++)
-		// {
-		// 	for (int j = 0; j < info->map->map_width; j++)
-		// 	{
-		// 		printf("%c", info->map->world_map[i][j]);
-		// 	}
-		// 	printf("\n");
-		// }
-		return (0);
+		return (1);
 	}
-	return (1);
+	// for (int i = 0; i < info->map->map_height + 1; i++)
+	// {
+	// 	for (int j = 0; j < info->map->map_width; j++)
+	// 	{
+	// 		printf("%c", info->map->world_map[i][j]);
+	// 	}
+	// 	printf("\n");
+	// }
+	// printf("\n");
+	// printf("res: %c", info->map->world_map[info->word->cur_y][info->word->cur_x]);
+	return (0);
 }
 
 int	check_fill(t_info *info)
 {
-	int	y;
-	int	x;
-
-	y = 0;
-	while (y < info->map->map_height)
+	info->word->cur_y = 0;
+	while (info->word->cur_y < info->map->map_height)
 	{
-		x = 0;
-		while (x < info->map->map_width)
+		info->word->cur_x = 0;
+		while (info->word->cur_x < info->map->map_width)
 		{
-			if (!check_fill_2(info, x, y))
+			if (!check_fill_2(info))
+			{
 				return (0);
-			x++;
+			}
+			info->word->cur_x++;
 		}
-		y++;
+		info->word->cur_y++;
 	}
 	return (1);
 }
@@ -97,7 +103,7 @@ int	flood_fill(int pox, int poy, t_info *info)
 			printf("Error\n incorrect position");
 			exit(1);
 		}
-		while (is_save(nx, ny, info) && info->map->world_map[ny][nx] == '0')
+		while (is_save(nx, ny, info) && (info->map->world_map[ny][nx] == '0'))
 		{
 			flood_fill(nx, ny, info);
 		}

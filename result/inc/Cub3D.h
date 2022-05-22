@@ -6,7 +6,7 @@
 /*   By: yeju <yeju@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/01 15:28:46 by yeju              #+#    #+#             */
-/*   Updated: 2022/05/20 21:27:18 by yeju             ###   ########.fr       */
+/*   Updated: 2022/05/22 13:12:17 by yeju             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,8 @@ typedef struct s_word
 	int			first;
 	int			second;
 	int			gnl_ret;
+	int			cur_x;
+	int			cur_y;
 }				t_word;
 
 typedef struct s_info
@@ -152,7 +154,7 @@ void	step_progress_until_hit(t_wall_data *wall_data, t_info *info);
 void	draw(t_info *info);
 
 int		check_fill(t_info *info);
-int		check_fill_2(t_info *info, int x, int y);
+int		check_fill_2(t_info *info);
 int		check_player_in_wall(int nx, int ny, t_info *info);
 int		is_save(int x, int y, t_info *info);
 int		flood_fill(int pox, int poy, t_info *info);
