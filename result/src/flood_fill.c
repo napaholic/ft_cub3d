@@ -6,7 +6,7 @@
 /*   By: yeju <yeju@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 21:30:12 by yeju              #+#    #+#             */
-/*   Updated: 2022/05/22 13:18:30 by yeju             ###   ########.fr       */
+/*   Updated: 2022/05/22 13:19:26 by yeju             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 int	check_fill_2(t_info *info)
 {
-	while (utils_white_space(info->map->world_map[info->word->cur_y][info->word->cur_x]))
+	while (utils_white_space(info->map->world_map \
+		[info->word->cur_y][info->word->cur_x]))
 		info->word->cur_x++;
 	if (info->map->world_map[info->word->cur_y][info->word->cur_x] == '\0')
 	{
@@ -28,23 +29,13 @@ int	check_fill_2(t_info *info)
 			return (1);
 		}
 	}
-	// printf("y, x: %d, %d\n", info->word->cur_y, info->word->cur_x);
-	if (utils_white_space(info->map->world_map[info->word->cur_y][info->word->cur_x]) || \
+	if (utils_white_space(info->map->world_map \
+		[info->word->cur_y][info->word->cur_x]) || \
 		info->map->world_map[info->word->cur_y][info->word->cur_x] == '1' || \
 		info->map->world_map[info->word->cur_y][info->word->cur_x] == '2')
 	{
 		return (1);
 	}
-	// for (int i = 0; i < info->map->map_height + 1; i++)
-	// {
-	// 	for (int j = 0; j < info->map->map_width; j++)
-	// 	{
-	// 		printf("%c", info->map->world_map[i][j]);
-	// 	}
-	// 	printf("\n");
-	// }
-	// printf("\n");
-	// printf("res: %c", info->map->world_map[info->word->cur_y][info->word->cur_x]);
 	return (0);
 }
 
