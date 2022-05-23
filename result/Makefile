@@ -6,14 +6,14 @@
 #    By: yeju <yeju@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/23 11:25:50 by yeju              #+#    #+#              #
-#    Updated: 2022/05/23 11:25:51 by yeju             ###   ########.fr        #
+#    Updated: 2022/05/23 11:43:23 by yeju             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3d
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror #-g
-MFLAGS = -L ./mlx -lmlx -framework OpenGL -framework AppKit #-fsanitize=address
+CFLAGS = -Wall -Wextra -Werror
+MFLAGS = -L ./mlx -lmlx -framework OpenGL -framework AppKit
 
 SRCS =	$(addprefix src/, Cub3D.c \
 					calculate_wall.c \
