@@ -6,7 +6,7 @@
 /*   By: yeju <yeju@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/01 15:28:46 by yeju              #+#    #+#             */
-/*   Updated: 2022/05/23 10:27:47 by yeju             ###   ########.fr       */
+/*   Updated: 2022/05/23 11:37:35 by yeju             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -223,6 +223,7 @@ int		key_update(t_info *info);
 
 int		utils_check_color(char *line, int c, int idx);
 int		get_rgb_value(char *line);
+int		get_only_num(char *color);
 int		read_color(char *line, int c, int idx, t_info *info);
 
 void	save_map_get_size(char *line_map, t_info *info);

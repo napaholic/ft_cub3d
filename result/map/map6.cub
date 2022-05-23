@@ -1,11 +1,11 @@
 WE ./textures/yellow_block.xpm
 
 
-    F 187,255,146
+    F 187,255, 146
 EA ./textures/green_block.xpm
 
 
-C 152,      255,242
+C 152,  +255,242
                   SO ./textures/blue_block.xpm
 
 
