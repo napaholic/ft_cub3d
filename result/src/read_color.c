@@ -23,7 +23,8 @@ int	utils_check_color(char *line, int c, int idx)
 		i = idx + 1;
 	while (utils_white_space(line[i]))
 		i++;
-	while (utils_white_space(line[i]) || utils_isdigit(line[i]) || line[i] == ',' || line[i] == '+')
+	while (utils_white_space(line[i]) || utils_isdigit(line[i]) \
+		|| line[i] == ',' || line[i] == '+')
 		i++;
 	while (utils_white_space(line[i]))
 		i++;
@@ -46,11 +47,9 @@ int	get_only_num(char *color)
 
 int	get_rgb_value(char *line)
 {
-	int		rgb;
 	char	**split_rgb;
-	int		arr[3];
+	int		arr[4];
 
-	rgb = 0;
 	line++;
 	while (utils_white_space(*line))
 		line++;
@@ -63,11 +62,11 @@ int	get_rgb_value(char *line)
 	if (0 <= arr[0] && arr[0] <= 255 && 0 <= arr[1] && arr[1] <= 255 \
 		&& 0 <= arr[2] && arr[2] <= 255)
 	{
-		rgb = arr[0];
-		rgb = (rgb << 8) + arr[1];
-		rgb = (rgb << 8) + arr[2];
+		arr[3] = arr[0];
+		arr[3] = (arr[3] << 8) + arr[1];
+		arr[3] = (arr[3] << 8) + arr[2];
 		utils_free_split(split_rgb);
-		return (rgb);
+		return (arr[3]);
 	}
 	else
 		print_exit("wrong color");
@@ -88,6 +87,7 @@ int	read_color(char *line, int c, int idx, t_info *info)
 		info->floor_color = rgb;
 	if (c == 'C')
 		info->ceiling_color = rgb;
-	free(line);
+	if (line)
+		free(line);
 	return (1);
 }

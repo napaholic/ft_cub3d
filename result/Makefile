@@ -13,7 +13,7 @@
 NAME = cub3d
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
-MFLAGS = -L ./mlx -lmlx -framework OpenGL -framework AppKit
+MFLAGS = -L ./mlx -lmlx -framework OpenGL -framework AppKit -fsanitize=address
 
 SRCS =	$(addprefix src/, Cub3D.c \
 					calculate_wall.c \
@@ -36,6 +36,7 @@ SRCS =	$(addprefix src/, Cub3D.c \
 					set_pos.c \
 					utils.c	\
 					utils2.c \
+					utils3.c \
 					wall_cast.c)
 
 OBJS = $(SRCS:.c=.o)

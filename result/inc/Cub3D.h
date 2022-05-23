@@ -171,6 +171,7 @@ size_t	utils_strlcat(char *dest, const char *src, size_t dstsize);
 char	*utils_strjoin(char *s1, char *s2);
 char	*utils_strdup(const char *s1);
 int		utils_strchr(char *string);
+char	*ft_strstr(char *ap_str, char *ap_find_str);
 int		gnl_split(char **string, char **line, int i);
 int		gnl_return(char **string, char **line, int read_size);
 int		get_next_line(int fd, char **line);
