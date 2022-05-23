@@ -6,7 +6,7 @@
 /*   By: yeju <yeju@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 20:14:58 by yeju              #+#    #+#             */
-/*   Updated: 2022/05/23 09:50:39 by yeju             ###   ########.fr       */
+/*   Updated: 2022/05/23 10:30:27 by yeju             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	get_rgb_value(char *line)
 	idx[0] = utils_atoi(split_rgb[0]);
 	idx[1] = utils_atoi(split_rgb[1]);
 	idx[2] = utils_atoi(split_rgb[2]);
-	if (0 <= idx[0] && idx[0] <= 255 && 0 <= idx[1] && idx[1] <= 255
+	if (0 <= idx[0] && idx[0] <= 255 && 0 <= idx[1] && idx[1] <= 255 \
 		&& 0 <= idx[2] && idx[2] <= 255)
 	{
 		rgb = idx[0];

@@ -6,7 +6,7 @@
 /*   By: yeju <yeju@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 11:20:24 by yeju              #+#    #+#             */
-/*   Updated: 2022/05/23 10:21:32 by yeju             ###   ########.fr       */
+/*   Updated: 2022/05/23 10:29:59 by yeju             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,11 @@ int	check_fd(int fd, char *argv)
 	len = utils_strlen(argv);
 	if (fd < 0)
 		print_exit("cannot open file");
-	if (argv[len - 1] != 'b' || argv[len - 2] != 'u' || argv[len - 3] != 'c' || argv[len - 4] != '.')
+	if (argv[len - 1] != 'b' || argv[len - 2] != 'u' \
+		|| argv[len - 3] != 'c' || argv[len - 4] != '.')
+	{
 		print_exit("wrong extension");
+	}
 	return (1);
 }
 
