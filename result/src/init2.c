@@ -6,7 +6,7 @@
 /*   By: yeju <yeju@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 11:17:22 by yeju              #+#    #+#             */
-/*   Updated: 2022/05/20 20:19:15 by yeju             ###   ########.fr       */
+/*   Updated: 2022/05/23 09:30:29 by yeju             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ t_info	*init_info_mlx(void)
 
 	info = (t_info *)malloc(sizeof(t_info));
 	if (!info)
-		exit(1);
+		print_exit("info malloc error");
 	utils_bzero(info, sizeof(t_info));
 	info->mlx = mlx_init();
 	if (!info->mlx)

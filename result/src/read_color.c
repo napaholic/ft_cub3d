@@ -6,7 +6,7 @@
 /*   By: yeju <yeju@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 20:14:58 by yeju              #+#    #+#             */
-/*   Updated: 2022/05/20 20:59:58 by yeju             ###   ########.fr       */
+/*   Updated: 2022/05/23 09:50:39 by yeju             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	get_rgb_value(char *line)
 		line++;
 	split_rgb = utils_split(line, ',');
 	if (!split_rgb[0] || !split_rgb[1] || !split_rgb[2])
-		print_exit("Error\n empty color\n");
+		print_exit("empty color");
 	idx[0] = utils_atoi(split_rgb[0]);
 	idx[1] = utils_atoi(split_rgb[1]);
 	idx[2] = utils_atoi(split_rgb[2]);
@@ -58,7 +58,8 @@ int	get_rgb_value(char *line)
 		return (rgb);
 	}
 	else
-		return (print_exit("Error\n wrong color\n"));
+		print_exit("wrong color");
+	return (0);
 }
 
 int	read_color(char *line, int c, int idx, t_info *info)
@@ -67,16 +68,10 @@ int	read_color(char *line, int c, int idx, t_info *info)
 
 	rgb = 0;
 	if (!utils_check_color(line, c, idx))
-	{
-		printf("Error\n wrong color\n");
-		exit(1);
-	}
+		print_exit("wrong color");
 	rgb = get_rgb_value(line);
 	if (!rgb)
-	{
-		printf("Error\n incorrect color\n");
-		exit(1);
-	}
+		print_exit("incorrect color");
 	if (c == 'F')
 		info->floor_color = rgb;
 	if (c == 'C')

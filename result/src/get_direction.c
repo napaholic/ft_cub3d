@@ -6,7 +6,7 @@
 /*   By: yeju <yeju@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 15:19:45 by yeju              #+#    #+#             */
-/*   Updated: 2022/05/20 19:03:50 by yeju             ###   ########.fr       */
+/*   Updated: 2022/05/23 09:03:22 by yeju             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 void	set_north(t_info *info, int hei, int wid)
 {
 	info->pos->dir_x = 0;
-	info->pos->dir_y = -1;
-	info->pos->plane_x = 0.66;
+	info->pos->dir_y = 1;
+	info->pos->plane_x = -0.66;
 	info->pos->plane_y = 0.0;
 	info->map->world_map[hei][wid] = '0';
 }
@@ -42,8 +42,8 @@ void	set_east(t_info *info, int hei, int wid)
 void	set_south(t_info *info, int hei, int wid)
 {
 	info->pos->dir_x = 0;
-	info->pos->dir_y = 1;
-	info->pos->plane_x = -0.66;
+	info->pos->dir_y = -1;
+	info->pos->plane_x = 0.66;
 	info->pos->plane_y = 0.0;
 	info->map->world_map[hei][wid] = '0';
 }

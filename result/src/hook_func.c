@@ -6,7 +6,7 @@
 /*   By: yeju <yeju@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 10:21:07 by yeju              #+#    #+#             */
-/*   Updated: 2022/05/20 19:19:44 by yeju             ###   ########.fr       */
+/*   Updated: 2022/05/23 09:38:11 by yeju             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	key_press(int key, t_info *info)
 {
 	if (key == KEY_ESC)
-		exit(1);
+		exit(0);
 	else if (key == KEY_W && info->key->w == 0)
 		info->key->w = 1;
 	else if (key == KEY_S && info->key->s == 0)
@@ -54,13 +54,13 @@ int	close_win(int keycode, int x, int y, void *param)
 	(void)x;
 	(void)y;
 	(void)param;
-	exit(1);
+	exit(0);
 }
 
 int	render(t_info *info)
 {
 	if (!raycasting(info))
-		exit(1);
+		print_exit("raycasting error");
 	key_update(info);
 	return (1);
 }

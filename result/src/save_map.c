@@ -6,7 +6,7 @@
 /*   By: yeju <yeju@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 18:07:07 by yeju              #+#    #+#             */
-/*   Updated: 2022/05/22 12:36:14 by yeju             ###   ########.fr       */
+/*   Updated: 2022/05/23 09:27:05 by yeju             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,13 +80,13 @@ char	**save_map(char *line_map, t_info *info)
 	save_map_2(line_map, info);
 	info->map->world_map = utils_split(line_map, '\n');
 	if (!*info->map->world_map)
-		print_exit("Error\n empty map");
+		print_exit("empty map");
 	set_pos(info->map->world_map, info);
 	if (info->pos->pos_x == -20.0 || info->pos->pos_y == -20.0)
-		print_exit("Error\n pos setting");
+		print_exit("pos setting");
 	if (!flood_fill((int)info->pos->pos_x, (int)info->pos->pos_y, info))
 	{
-		print_exit("Error\n incorrect map");
+		print_exit("incorrect map");
 	}
 	free(line_map);
 	return (info->map->world_map);

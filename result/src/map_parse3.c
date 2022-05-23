@@ -6,7 +6,7 @@
 /*   By: yeju <yeju@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 11:20:24 by yeju              #+#    #+#             */
-/*   Updated: 2022/05/20 21:20:49 by yeju             ###   ########.fr       */
+/*   Updated: 2022/05/23 09:49:13 by yeju             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,7 @@ int	map_check(char *line, char **map, int idx, t_info *info)
 	if (line[idx] == '1')
 		info->flag = 1;
 	if (!utils_strlen(line) && info->flag)
-	{
-		printf("Error\n empty line in map");
-		exit(1);
-	}
+		print_exit("empty line in map");
 	if (utils_white_space(line[idx]) || line[idx] == '1' || line[idx] == '0')
 	{
 		*map = utils_strjoin(*map, line);
@@ -57,9 +54,7 @@ int	check_fd(int fd)
 {
 	if (fd < 0)
 	{
-		printf("%s", "ERROR\n cannot open file\n");
-		exit(1);
-		return (0);
+		print_exit("cannot open file");
 	}
 	return (1);
 }

@@ -1,7 +1,7 @@
 NAME = cub3d
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -g
-MFLAGS = -L ./mlx -lmlx -framework OpenGL -framework AppKit -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror #-g
+MFLAGS = -L ./mlx -lmlx -framework OpenGL -framework AppKit #-fsanitize=address
 
 SRCS =	$(addprefix src/, Cub3D.c \
 					calculate_wall.c \
@@ -29,7 +29,6 @@ SRCS =	$(addprefix src/, Cub3D.c \
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
-	make clean
 
 %.o : %.c
 	${CC} ${CFLAGS} -c $< -o $@
@@ -37,12 +36,8 @@ all: $(NAME)
 $(NAME) : $(OBJS)
 	$(CC) $(CFLAGS) -o $@ $(OBJS) $(MFLAGS)
 
-bonus:
-	make all -C $(BONUS)
-
 clean: 
 	rm -f $(OBJS)
-	# make fclean -C $(BONUS)
 
 fclean: clean
 	rm -f $(NAME)

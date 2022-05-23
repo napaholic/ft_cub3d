@@ -6,7 +6,7 @@
 /*   By: yeju <yeju@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 20:03:30 by yeju              #+#    #+#             */
-/*   Updated: 2022/05/20 20:03:32 by yeju             ###   ########.fr       */
+/*   Updated: 2022/05/23 09:27:18 by yeju             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,5 @@ void	set_pos(char **world_map, t_info *info)
 		hei++;
 	}
 	if (flag != 1)
-		print_exit("Error\n there is multi player\n");
+		print_exit("not one player");
 }

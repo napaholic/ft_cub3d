@@ -6,7 +6,7 @@
 /*   By: yeju <yeju@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 21:30:12 by yeju              #+#    #+#             */
-/*   Updated: 2022/05/22 13:19:26 by yeju             ###   ########.fr       */
+/*   Updated: 2022/05/23 09:28:39 by yeju             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,8 +91,7 @@ int	flood_fill(int pox, int poy, t_info *info)
 		ny = poy + dy[idx];
 		if (!check_player_in_wall(nx, ny, info))
 		{
-			printf("Error\n incorrect position");
-			exit(1);
+			print_exit("incorrect position");
 		}
 		while (is_save(nx, ny, info) && (info->map->world_map[ny][nx] == '0'))
 		{
