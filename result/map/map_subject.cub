@@ -3,7 +3,7 @@ WE ./textures/red_block.xpm
 EA ./textures/yellow_block.xpm
 SO ./textures/green_block.xpm
 
-F 0,100,220
+F 220,100,0
 C 225,30,0
 
         1111111111111111111111111

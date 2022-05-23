@@ -6,7 +6,7 @@
 /*   By: yeju <yeju@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 11:20:24 by yeju              #+#    #+#             */
-/*   Updated: 2022/05/23 09:49:13 by yeju             ###   ########.fr       */
+/*   Updated: 2022/05/23 10:21:32 by yeju             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,15 @@ int	read_map_sub(char *line, char **map, t_info *info)
 	return (1);
 }
 
-int	check_fd(int fd)
+int	check_fd(int fd, char *argv)
 {
+	int	len;
+
+	len = utils_strlen(argv);
 	if (fd < 0)
-	{
 		print_exit("cannot open file");
-	}
+	if (argv[len - 1] != 'b' || argv[len - 2] != 'u' || argv[len - 3] != 'c' || argv[len - 4] != '.')
+		print_exit("wrong extension");
 	return (1);
 }
 
@@ -66,7 +69,7 @@ char	*read_map(char *argv, t_info *info)
 	char	*line;
 
 	fd = open(argv, O_RDONLY);
-	if (!check_fd(fd))
+	if (!check_fd(fd, argv))
 		return (0);
 	map = (char *)malloc(sizeof(char) * 2);
 	utils_bzero(map, sizeof(char));
