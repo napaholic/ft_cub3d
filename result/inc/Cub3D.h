@@ -6,7 +6,7 @@
 /*   By: yeju <yeju@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/01 15:28:46 by yeju              #+#    #+#             */
-/*   Updated: 2022/05/22 13:12:17 by yeju             ###   ########.fr       */
+/*   Updated: 2022/05/23 10:27:47 by yeju             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,7 +158,6 @@ int		check_fill_2(t_info *info);
 int		check_player_in_wall(int nx, int ny, t_info *info);
 int		is_save(int x, int y, t_info *info);
 int		flood_fill(int pox, int poy, t_info *info);
-void	set_arr(int *dx, int *dy);
 
 void	get_direction(t_info *info, char **world_map, int hei, int wid);
 void	set_south(t_info *info, int hei, int wid);
@@ -187,6 +186,7 @@ int		init_player(t_info *info);
 int		init_img(t_info *info, int win_wid, int win_hei);
 int		init_win_img(t_info *info);
 int		init_path(t_info *info);
+int		init_word(t_info *info);
 int		init_info(t_info *info, char *argv);
 t_info	*init_info_mlx(void);
 
@@ -205,14 +205,12 @@ int		utils_check_txt_execute(char *path);
 char	*utils_substr(char const *s, unsigned int start, size_t len);
 int		utils_get_size(char *str, int idx);
 char	*get_texture_path(char *line, int idx);
-int		read_txt_path(char *line, int idx, t_info *info);
 int		check_path(char **path, char *line, int idx);
-int		utils_check_color(char *line, int c, int idx);
-int		get_rgb_value(char *line);
-int		read_color(char *line, int c, int idx, t_info *info);
+int		read_txt_path(char *line, int idx, t_info *info);
 int		read_map_setting(char *line, int idx, t_info *info);
 int		map_check(char *line, char **map, int idx, t_info *info);
 int		read_map_sub(char *line, char **map, t_info *info);
+int		check_fd(int fd, char *argv);
 char	*read_map(char *argv, t_info *info);
 
 int		player_move_front(t_info *info);
@@ -223,22 +221,29 @@ int		rotate_left(t_info *info);
 int		rotate_right(t_info *info);
 int		key_update(t_info *info);
 
+int		utils_check_color(char *line, int c, int idx);
+int		get_rgb_value(char *line);
+int		read_color(char *line, int c, int idx, t_info *info);
+
 void	save_map_get_size(char *line_map, t_info *info);
 void	save_map_get_size_2(char *line_map, t_info *info, int hei, int i);
-void	set_pos_2(char **world_map, t_info *info, int hei, int wid);
-void	set_pos(char **world_map, t_info *info);
 void	save_map_2(char *line_map, t_info *info);
 char	**save_map(char *line_map, t_info *info);
+
+void	set_pos_2(char **world_map, t_info *info, int hei, int wid);
+void	set_pos(char **world_map, t_info *info);
 
 int		utils_count_words(const char *str, char c);
 char	*utils_word_dup(const char *str, int start, int finish);
 char	**utils_split(char const *s, char c);
 int		utils_atoi(const char *str);
 void	utils_free_split(char **split_rgb);
+
 int		utils_white_space(char c);
 int		utils_isprint(int c);
 int		utils_isdigit(int c);
 void	utils_bzero(void *s, size_t n);
+void	set_arr(int *dx, int *dy);
 
 void	set_wall_data(t_wall_data *wall_data, t_info *info);
 void	set_texture_data(t_wall_data *wall_data, t_info *info);
